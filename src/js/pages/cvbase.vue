@@ -37,24 +37,29 @@
     			</div>
     	</div>
 		  
-			  <div class="mdc-layout-grid__cell--span-4 secRow">
+			  <div class="mdc-layout-grid__cell--span-4">
 			  	<div class="mdc-card">
 			      <div class="mdc-card__primary">
 			        <h2 class="demo-card__title mdc-typography--headline6">Competence</h2>
 			      </div>
 			      <div class="mdc-card__secondary">
-			        Cette personne est competente
+			        <ul id="example-1" class="mdc-list">
+							  <li  class="mdc-list-item" v-for="s in skills">
+							    {{ s }}
+							  </li>
+							</ul>
 			      </div>
       		</div>
 			  </div>
 			  
-			  <div class="mdc-layout-grid__cell--span-8 secRow">
+			  <div class="mdc-layout-grid__cell--span-8">
 			  	<div class="mdc-card">
 			      <div class="mdc-card__primary">
 			        <h2 class="demo-card__title mdc-typography--headline6">Experience</h2>
 			      </div>
 			      <div class="mdc-card__secondary" v-for="experience in experiences">
-			      	<h1> {{ experience.title }} </h1> {{ experience.company }}, {{ experience.location }}
+			      	<h1> {{ experience.title }} </h1> 
+			      	<p class="infoExp"> {{ experience.company }}, {{ experience.location }} </p>
 			      	<p> {{ experience.content }}</p>
 			      </div>
       		</div>
@@ -67,7 +72,8 @@
 			      </div>
 			      <div class="mdc-card__secondary" v-for="s in formation">
 			        <h1>{{ s.school }}</h1> 
-			        <span>{{ s.diploma }} {{ s.content }} </span>
+			        <span class="infoExp">{{ s.diploma }}</span>
+			        <p> {{ s.content }} </p> 
 			      </div>
       		</div>
 			  </div>
@@ -80,7 +86,7 @@
 			      <div class="mdc-card__secondary" v-for="p in projects">
 			        <h1> {{p.title}} </h1>
 			        <p>{{ p.description }}</p>
-			        <span> {{ p.techno }}</span>
+			        <span class="infoExp"> {{ p.techno }}</span>
 			      </div>
       		</div>
 			  </div>
@@ -91,9 +97,10 @@
 
 <script>
 export default {
-	props: [ 'exp' ],
+	props: [ 'user' ],
 	created() {
-		this.expreriences = this.exp;
+		let user = JSON.parse(this.user)
+		console.log(user)
 	},
 	data() {
 		return {
@@ -111,14 +118,33 @@ export default {
 				picture						: 'https://media.licdn.com/dms/image/C5603AQF6jp70EP7KnA/profile-displayphoto-shrink_200_200/0?e=1531353600&v=beta&t=kRgNoDYxcnE44fdlFm68fLWLR9XrGm7mnu4n-89Tu-A'
 			},
 			experiences : [
-				{ title: 'Lorem', content: 'ipsum...', company: 'Orange', location: 'Fr'
-			}],
+				{ title: 'Developpeur Full de la Stack qui stack le stackement de la stack', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultricies commodo aliquam. Vestibulum sed dui eros. Integer et pretium nunc. Cras ornare odio id fermentum viverra. Suspendisse id tortor quis lectus laoreet aliquet quis nec justo. Duis iaculis dui rutrum pulvinar consequat. Sed bibendum mattis nisi vitae aliquam. Nulla tristique erat et quam hendrerit, et vestibulum nisl sodales. Etiam ac dictum elit, non dapibus nisi. Curabitur tortor lectus, elementum at sodales a, fermentum imperdiet velit. Aliquam in pharetra elit. Donec sodales, metus id ultricies scelerisque, nunc dui pulvinar lectus, ut pharetra diam nisi eu turpis. Vestibulum placerat pellentesque mauris id facilisis. Vivamus porta et nunc ac hendrerit. Sed a ex at dolor molestie placerat. Sed fermentum nisi at enim varius, a commodo risus tempor.', company: 'Orange', location: 'France'},
+				{ title: 'Developpeur Full de la Stack qui stack le stackement de la stack', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultricies commodo aliquam. Vestibulum sed dui eros. Integer et pretium nunc. Cras ornare odio id fermentum viverra. Suspendisse id tortor quis lectus laoreet aliquet quis nec justo. Duis iaculis dui rutrum pulvinar consequat. Sed bibendum mattis nisi vitae aliquam. Nulla tristique erat et quam hendrerit, et vestibulum nisl sodales. Etiam ac dictum elit, non dapibus nisi. Curabitur tortor lectus, elementum at sodales a, fermentum imperdiet velit. Aliquam in pharetra elit. Donec sodales, metus id ultricies scelerisque, nunc dui pulvinar lectus, ut pharetra diam nisi eu turpis. Vestibulum placerat pellentesque mauris id facilisis. Vivamus porta et nunc ac hendrerit. Sed a ex at dolor molestie placerat. Sed fermentum nisi at enim varius, a commodo risus tempor.', company: 'Orange', location: 'France'},
+				{ title: 'Developpeur Full de la Stack qui stack le stackement de la stack', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultricies commodo aliquam. Vestibulum sed dui eros. Integer et pretium nunc. Cras ornare odio id fermentum viverra. Suspendisse id tortor quis lectus laoreet aliquet quis nec justo. Duis iaculis dui rutrum pulvinar consequat. Sed bibendum mattis nisi vitae aliquam. Nulla tristique erat et quam hendrerit, et vestibulum nisl sodales. Etiam ac dictum elit, non dapibus nisi. Curabitur tortor lectus, elementum at sodales a, fermentum imperdiet velit. Aliquam in pharetra elit. Donec sodales, metus id ultricies scelerisque, nunc dui pulvinar lectus, ut pharetra diam nisi eu turpis. Vestibulum placerat pellentesque mauris id facilisis. Vivamus porta et nunc ac hendrerit. Sed a ex at dolor molestie placerat. Sed fermentum nisi at enim varius, a commodo risus tempor.', company: 'Orange', location: 'France'},
+				{ title: 'Developpeur Full de la Stack qui stack le stackement de la stack', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultricies commodo aliquam. Vestibulum sed dui eros. Integer et pretium nunc. Cras ornare odio id fermentum viverra. Suspendisse id tortor quis lectus laoreet aliquet quis nec justo. Duis iaculis dui rutrum pulvinar consequat. Sed bibendum mattis nisi vitae aliquam. Nulla tristique erat et quam hendrerit, et vestibulum nisl sodales. Etiam ac dictum elit, non dapibus nisi. Curabitur tortor lectus, elementum at sodales a, fermentum imperdiet velit. Aliquam in pharetra elit. Donec sodales, metus id ultricies scelerisque, nunc dui pulvinar lectus, ut pharetra diam nisi eu turpis. Vestibulum placerat pellentesque mauris id facilisis. Vivamus porta et nunc ac hendrerit. Sed a ex at dolor molestie placerat. Sed fermentum nisi at enim varius, a commodo risus tempor.', company: 'Orange', location: 'France'},
+				{ title: 'Developpeur Full de la Stack qui stack le stackement de la stack', content: 'Sed id diam eget dolor euismod fermentum id eget orci. Etiam ultrices, tortor convallis sollicitudin faucibus, libero dolor tempus odio, sit amet sodales lorem libero id velit. Sed at rhoncus massa. Ut a porta sem, ut dignissim tellus. Suspendisse id venenatis lectus. Ut ornare condimentum interdum. Etiam vitae justo volutpat, consequat purus aliquet, consequat risus. Integer non facilisis urna. Cras non laoreet orci. Sed faucibus malesuada nibh vitae dictum. Aliquam pretium tincidunt imperdiet. Nunc finibus imperdiet eros. Pellentesque varius lorem ut ante pellentesque tempor. ', company: 'Orange', location: 'France'}
+			],
 			projects     : [
-				{ title: 'KEEPER', description: 'mieux que google KEEP', techno: 'NodeJS et vueJS' }
+				{ title: 'KEEPER', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultricies commodo aliquam. Vestibulum sed dui eros. Integer et pretium nunc. Cras ornare odio id fermentum viverra. Suspendisse id tortor quis lectus laoreet aliquet quis nec justo. Duis iaculis dui rutrum pulvinar consequat. Sed bibendum mattis nisi vitae aliquam. Nulla tristique erat et quam hendrerit, et vestibulum nisl sodales. ', techno: 'NodeJS et vueJS' },
+				{ title: 'SUPER PROJET', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultricies commodo aliquam. Vestibulum sed dui eros. Integer et pretium nunc. Cras ornare odio id fermentum viverra. Suspendisse id tortor quis lectus laoreet aliquet quis nec justo. Duis iaculis dui rutrum pulvinar consequat. Sed bibendum mattis nisi vitae aliquam. Nulla tristique erat et quam hendrerit, et vestibulum nisl sodales. ', techno: 'NodeJS et vueJS' },
+				{ title: 'SUPER PROJET', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultricies commodo aliquam. Vestibulum sed dui eros. Integer et pretium nunc. Cras ornare odio id fermentum viverra. Suspendisse id tortor quis lectus laoreet aliquet quis nec justo. Duis iaculis dui rutrum pulvinar consequat. Sed bibendum mattis nisi vitae aliquam. Nulla tristique erat et quam hendrerit, et vestibulum nisl sodales. ', techno: 'NodeJS et vueJS' },
+				{ title: 'SUPER PROJET', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultricies commodo aliquam. Vestibulum sed dui eros. Integer et pretium nunc. Cras ornare odio id fermentum viverra. Suspendisse id tortor quis lectus laoreet aliquet quis nec justo. Duis iaculis dui rutrum pulvinar consequat. Sed bibendum mattis nisi vitae aliquam. Nulla tristique erat et quam hendrerit, et vestibulum nisl sodales. ', techno: 'NodeJS et vueJS' },
+				{ title: 'SUPER PROJET', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultricies commodo aliquam. Vestibulum sed dui eros. Integer et pretium nunc. Cras ornare odio id fermentum viverra. Suspendisse id tortor quis lectus laoreet aliquet quis nec justo. Duis iaculis dui rutrum pulvinar consequat. Sed bibendum mattis nisi vitae aliquam. Nulla tristique erat et quam hendrerit, et vestibulum nisl sodales. ', techno: 'NodeJS et vueJS' },
+				{ title: 'SUPER PROJET', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultricies commodo aliquam. Vestibulum sed dui eros. Integer et pretium nunc. Cras ornare odio id fermentum viverra. Suspendisse id tortor quis lectus laoreet aliquet quis nec justo. Duis iaculis dui rutrum pulvinar consequat. Sed bibendum mattis nisi vitae aliquam. Nulla tristique erat et quam hendrerit, et vestibulum nisl sodales. ', techno: 'NodeJS et vueJS' },
+				{ title: 'SUPER PROJET', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultricies commodo aliquam. Vestibulum sed dui eros. Integer et pretium nunc. Cras ornare odio id fermentum viverra. Suspendisse id tortor quis lectus laoreet aliquet quis nec justo. Duis iaculis dui rutrum pulvinar consequat. Sed bibendum mattis nisi vitae aliquam. Nulla tristique erat et quam hendrerit, et vestibulum nisl sodales. ', techno: 'NodeJS et vueJS' },
+				{ title: 'SUPER PROJET', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultricies commodo aliquam. Vestibulum sed dui eros. Integer et pretium nunc. Cras ornare odio id fermentum viverra. Suspendisse id tortor quis lectus laoreet aliquet quis nec justo. Duis iaculis dui rutrum pulvinar consequat. Sed bibendum mattis nisi vitae aliquam. Nulla tristique erat et quam hendrerit, et vestibulum nisl sodales. ', techno: 'NodeJS et vueJS' },
+				{ title: 'SUPER PROJET', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultricies commodo aliquam. Vestibulum sed dui eros. Integer et pretium nunc. Cras ornare odio id fermentum viverra. Suspendisse id tortor quis lectus laoreet aliquet quis nec justo. Duis iaculis dui rutrum pulvinar consequat. Sed bibendum mattis nisi vitae aliquam. Nulla tristique erat et quam hendrerit, et vestibulum nisl sodales. ', techno: 'NodeJS et vueJS' }
 			],
 			formation    : [
-				{ school: 'ppS', diploma: 'ppS', content: 'lalalalalala' }
-			]
+				{ school: 'Polytech Paris Sud', diploma: 'Diplome de lingéneieur', content: 'Sed id diam eget dolor euismod fermentum id eget orci. Etiam ultrices, tortor convallis sollicitudin faucibus, libero dolor tempus odio, sit amet sodales lorem libero id velit. Sed at rhoncus massa. Ut a porta sem, ut dignissim tellus. Suspendisse id venenatis lectus. Ut ornare condimentum interdum. Etiam vitae justo volutpat, consequat purus aliquet, consequat risus. Integer non facilisis urna. Cras non laoreet orci. Sed faucibus malesuada nibh vitae dictum. Aliquam pretium tincidunt imperdiet. Nunc finibus imperdiet eros. Pellentesque varius lorem ut ante pellentesque tempor. ' },
+				{ school: 'Polytech Paris Sud', diploma: 'Diplome obtenu en etude', content: 'Sed id diam eget dolor euismod fermentum id eget orci. Etiam ultrices, tortor convallis sollicitudin faucibus, libero dolor tempus odio, sit amet sodales lorem libero id velit. Sed at rhoncus massa. Ut a porta sem, ut dignissim tellus. Suspendisse id venenatis lectus. Ut ornare condimentum interdum. Etiam vitae justo volutpat, consequat purus aliquet, consequat risus. Integer non facilisis urna. Cras non laoreet orci. Sed faucibus malesuada nibh vitae dictum. Aliquam pretium tincidunt imperdiet. Nunc finibus imperdiet eros. Pellentesque varius lorem ut ante pellentesque tempor. ' },
+				{ school: 'Polytech Paris Sud', diploma: 'Diplome obtenu en etude', content: 'Sed id diam eget dolor euismod fermentum id eget orci. Etiam ultrices, tortor convallis sollicitudin faucibus, libero dolor tempus odio, sit amet sodales lorem libero id velit. Sed at rhoncus massa. Ut a porta sem, ut dignissim tellus. Suspendisse id venenatis lectus. Ut ornare condimentum interdum. Etiam vitae justo volutpat, consequat purus aliquet, consequat risus. Integer non facilisis urna. Cras non laoreet orci. Sed faucibus malesuada nibh vitae dictum. Aliquam pretium tincidunt imperdiet. Nunc finibus imperdiet eros. Pellentesque varius lorem ut ante pellentesque tempor. ' },
+				{ school: 'Polytech Paris Sud', diploma: 'Diplome obtenu en etude', content: 'Sed id diam eget dolor euismod fermentum id eget orci. Etiam ultrices, tortor convallis sollicitudin faucibus, libero dolor tempus odio, sit amet sodales lorem libero id velit. Sed at rhoncus massa. Ut a porta sem, ut dignissim tellus. Suspendisse id venenatis lectus. Ut ornare condimentum interdum. Etiam vitae justo volutpat, consequat purus aliquet, consequat risus. Integer non facilisis urna. Cras non laoreet orci. Sed faucibus malesuada nibh vitae dictum. Aliquam pretium tincidunt imperdiet. Nunc finibus imperdiet eros. Pellentesque varius lorem ut ante pellentesque tempor. ' },
+				{ school: 'Polytech Paris Sud', diploma: 'Diplome obtenu en etude', content: 'Sed id diam eget dolor euismod fermentum id eget orci. Etiam ultrices, tortor convallis sollicitudin faucibus, libero dolor tempus odio, sit amet sodales lorem libero id velit. Sed at rhoncus massa. Ut a porta sem, ut dignissim tellus. Suspendisse id venenatis lectus. Ut ornare condimentum interdum. Etiam vitae justo volutpat, consequat purus aliquet, consequat risus. Integer non facilisis urna. Cras non laoreet orci. Sed faucibus malesuada nibh vitae dictum. Aliquam pretium tincidunt imperdiet. Nunc finibus imperdiet eros. Pellentesque varius lorem ut ante pellentesque tempor. ' },
+				{ school: 'Polytech Paris Sud', diploma: 'Diplome obtenu en etude', content: 'Sed id diam eget dolor euismod fermentum id eget orci. Etiam ultrices, tortor convallis sollicitudin faucibus, libero dolor tempus odio, sit amet sodales lorem libero id velit. Sed at rhoncus massa. Ut a porta sem, ut dignissim tellus. Suspendisse id venenatis lectus. Ut ornare condimentum interdum. Etiam vitae justo volutpat, consequat purus aliquet, consequat risus. Integer non facilisis urna. Cras non laoreet orci. Sed faucibus malesuada nibh vitae dictum. Aliquam pretium tincidunt imperdiet. Nunc finibus imperdiet eros. Pellentesque varius lorem ut ante pellentesque tempor. ' },
+				{ school: 'Polytech Paris Sud', diploma: 'Diplome obtenu en etude', content: 'Sed id diam eget dolor euismod fermentum id eget orci. Etiam ultrices, tortor convallis sollicitudin faucibus, libero dolor tempus odio, sit amet sodales lorem libero id velit. Sed at rhoncus massa. Ut a porta sem, ut dignissim tellus. Suspendisse id venenatis lectus. Ut ornare condimentum interdum. Etiam vitae justo volutpat, consequat purus aliquet, consequat risus. Integer non facilisis urna. Cras non laoreet orci. Sed faucibus malesuada nibh vitae dictum. Aliquam pretium tincidunt imperdiet. Nunc finibus imperdiet eros. Pellentesque varius lorem ut ante pellentesque tempor. ' }
+			],
+			skills				: ['Lorem', 'Ipsum','Lorem', 'Ipsum','Lorem', 'Ipsum','Lorem', 'Ipsum','Lorem', 'Ipsum','Lorem', 'Ipsum','Lorem', 'Ipsum','Lorem', 'Ipsum']
 		}
 	},
 	methods: {
