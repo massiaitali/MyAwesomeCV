@@ -22086,25 +22086,81 @@ var _home = require('./pages/home.vue');
 
 var _home2 = _interopRequireDefault(_home);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _cvbase = require('./pages/cvbase.vue');
 
-// Local lib
-_vue2.default.use(_vueRouter2.default);
+var _cvbase2 = _interopRequireDefault(_cvbase);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Import Pages
 
 
 // External lib
+_vue2.default.use(_vueRouter2.default); // Local lib
 
 
 var app = new _vue2.default({
   el: '#app',
   router: new _vueRouter2.default({
-    routes: [{ path: '/', name: 'home', component: _home2.default }]
+    routes: [{ path: '/', name: 'home', component: _home2.default }, { path: '/cvbase', name: 'cvbase', component: _cvbase2.default }]
   })
 });
 
-},{"../../libs/log.js":1,"./pages/home.vue":8,"vue-router/dist/vue-router.js":4,"vue/dist/vue.js":5}],8:[function(require,module,exports){
+},{"../../libs/log.js":1,"./pages/cvbase.vue":8,"./pages/home.vue":9,"vue-router/dist/vue-router.js":4,"vue/dist/vue.js":5}],8:[function(require,module,exports){
+;(function(){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = {
+	props: ['exp'],
+	created: function created() {
+		this.expreriences = this.exp;
+	},
+	data: function data() {
+		return {
+			basicInformation: {
+				firstName: 'Gregoire',
+				lastName: 'Harba',
+				birthDate: '21/03/1995',
+				title: 'Apprenti ingénieur',
+				currentOccupation: 'Apprenti',
+				formation: 'polydouille',
+				country: 'France',
+				postCode: '75015',
+				location: 'Paris',
+				simpleDescription: "Développeur Web depuis 3 ans au sein d\'Orange, j\'aime être force de proposition pour répondre à des problématiques techniques et humaines. Investi dans les relation client, je suis toujours actif pour recueillir leur avis et j\'ai l\'habitude de présenter les projets de façon claire et concise. La formation des utilisateurs est aussi pour moi un point capital et je suis à l\'écoute de toutes personnes avec qui je suis amené à avoir des interactions.Les challenges techniques sont pour moi les plus importants vecteurs de motivation",
+				picture: 'https://media.licdn.com/dms/image/C5603AQF6jp70EP7KnA/profile-displayphoto-shrink_200_200/0?e=1531353600&v=beta&t=kRgNoDYxcnE44fdlFm68fLWLR9XrGm7mnu4n-89Tu-A'
+			},
+			experiences: [{ title: 'Lorem', content: 'ipsum...', company: 'Orange', location: 'Fr'
+			}],
+			projects: [{ title: 'KEEPER', description: 'mieux que google KEEP', techno: 'NodeJS et vueJS' }],
+			formation: [{ school: 'ppS', diploma: 'ppS', content: 'lalalalalala' }]
+		};
+	},
+
+	methods: {
+		test: function test() {}
+	}
+};
+})()
+if (module.exports.__esModule) module.exports = module.exports.default
+var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
+if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"cvbase"}},[_vm._v("\n\t\tCV Base\n\n\t\t"),_c('div',{staticClass:"mdc-layout-grid"},[_c('div',{staticClass:"mdc-layout-grid__inner"},[_c('div',{staticClass:"mdc-layout-grid__cell--span-12 top"},[_c('div',{staticClass:"mdc-layout-grid"},[_c('div',{staticClass:"mdc-layout-grid__inner"},[_c('div',{staticClass:"mdc-layout-grid__cell--span-12"},[(_vm.basicInformation.picture)?_c('img',{staticClass:"profile",attrs:{"src":_vm.basicInformation.picture}}):_vm._e(),_vm._v(" "),_c('h2',[_vm._v(_vm._s(_vm.basicInformation.title))]),_vm._v(" "),_c('p',[_vm._v("\n\t\t\t\t\t      \t"+_vm._s(((_vm.basicInformation.firstName) + " " + (_vm.basicInformation.lastName)))+"\n\t\t\t\t\t    \t\t")]),_vm._v(" "),_c('p',[_vm._v("\n\t\t\t\t\t      \t"+_vm._s(_vm.basicInformation.birthDate)+"\n\t\t\t\t\t      \t")]),_vm._v(" "),_c('p',[_vm._v("\n\t\t\t\t\t      \t"+_vm._s(((_vm.experiences[0].company) + " " + (_vm.formation[0].school)))+"\n\t\t\t\t\t    \t\t")]),_vm._v(" "),_c('p',[_vm._v("\n\t\t\t\t\t      \t"+_vm._s(((_vm.basicInformation.location) + " " + (_vm.basicInformation.postCode) + " " + (_vm.basicInformation.country)))+"\n\t\t\t    \t\t\t\t")])]),_vm._v(" "),_c('div',{staticClass:"mdc-layout-grid__cell--span-12 secRow"},[_vm._v("\n\t\t\t    \t\t\t"+_vm._s(_vm.basicInformation.simpleDescription)+"\n\t\t\t    \t\t")])])])]),_vm._v(" "),_vm._m(0),_vm._v(" "),_c('div',{staticClass:"mdc-layout-grid__cell--span-8 secRow"},[_c('div',{staticClass:"mdc-card"},[_vm._m(1),_vm._v(" "),_vm._l((_vm.experiences),function(experience){return _c('div',{staticClass:"mdc-card__secondary"},[_c('h1',[_vm._v(" "+_vm._s(experience.title)+" ")]),_vm._v(" "+_vm._s(experience.company)+", "+_vm._s(experience.location)+"\n\t\t\t      \t"),_c('p',[_vm._v(" "+_vm._s(experience.content))])])})],2)]),_vm._v(" "),_c('div',{staticClass:"mdc-layout-grid__cell--span-12"},[_c('div',{staticClass:"mdc-card"},[_vm._m(2),_vm._v(" "),_vm._l((_vm.formation),function(s){return _c('div',{staticClass:"mdc-card__secondary"},[_c('h1',[_vm._v(_vm._s(s.school))]),_vm._v(" "),_c('span',[_vm._v(_vm._s(s.diploma)+" "+_vm._s(s.content)+" ")])])})],2)]),_vm._v(" "),_c('div',{staticClass:"mdc-layout-grid__cell--span-12"},[_c('div',{staticClass:"mdc-card"},[_vm._m(3),_vm._v(" "),_vm._l((_vm.projects),function(p){return _c('div',{staticClass:"mdc-card__secondary"},[_c('h1',[_vm._v(" "+_vm._s(p.title)+" ")]),_vm._v(" "),_c('p',[_vm._v(_vm._s(p.description))]),_vm._v(" "),_c('span',[_vm._v(" "+_vm._s(p.techno))])])})],2)])])])])}
+__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"mdc-layout-grid__cell--span-4 secRow"},[_c('div',{staticClass:"mdc-card"},[_c('div',{staticClass:"mdc-card__primary"},[_c('h2',{staticClass:"demo-card__title mdc-typography--headline6"},[_vm._v("Competence")])]),_vm._v(" "),_c('div',{staticClass:"mdc-card__secondary"},[_vm._v("\n\t\t\t        Cette personne est competente\n\t\t\t      ")])])])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"mdc-card__primary"},[_c('h2',{staticClass:"demo-card__title mdc-typography--headline6"},[_vm._v("Experience")])])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"mdc-card__primary"},[_c('h2',{staticClass:"demo-card__title mdc-typography--headline6"},[_vm._v("Formation")])])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"mdc-card__primary"},[_c('h2',{staticClass:"demo-card__title mdc-typography--headline6"},[_vm._v("Project ")])])}]
+if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-12d75211", __vue__options__)
+  } else {
+    hotAPI.rerender("data-v-12d75211", __vue__options__)
+  }
+})()}
+},{"vue":6,"vue-hot-reload-api":3}],9:[function(require,module,exports){
 ;(function(){
 "use strict";
 
@@ -22123,7 +22179,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-49591838", __vue__options__)
+    hotAPI.createRecord("data-v-19c5ee28", __vue__options__)
   } else {
     hotAPI.reload("data-v-49591838", __vue__options__)
   }
