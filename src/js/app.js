@@ -16,8 +16,8 @@ const app = new Vue({
   el: '#app',
   router: new VueRouter({
     routes: [
-      { path: '/', name: 'home', component: HomePage },
-      { path: '/cvbase', name: 'cvbase', component: CvbasePage }
+      { path: '/',        name: 'home',     component: HomePage },
+      { path: '/cvbase',  name: 'cvbase',   component: CvbasePage }
     ]
   })
 })

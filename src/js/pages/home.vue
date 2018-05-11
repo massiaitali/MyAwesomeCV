@@ -85,7 +85,7 @@ export default {
   
   data() {
     return {
-      avatar: 'linkedin',
+      avatar: 'github',
       linkedin: undefined,
       github: undefined
     }
@@ -125,10 +125,16 @@ export default {
     },
 
     nextStep() {
-      console.log('TODO merge between services');
-      console.log(this.avatar)
-      console.log(this.linkedin)
-      console.log(this.github)
+      let user = {
+          firstName: this.linkedin.firstName,
+          lastName: this.linkedin.lastName,
+          name: this.github.name,
+          picture: this.avatar === 'github' ? this.github.image : undefined,
+          experiences: this.linkedin.positions.values
+        };
+
+      sessionStorage.setItem('user', JSON.stringify(user))
+      this.$router.push({ name: 'cvbase' })
     }
   }
 

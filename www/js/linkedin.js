@@ -25,7 +25,9 @@ window.Linkedin = {
       .result(Linkedin.ShowProfileData);
   },
 
-  ShowProfileData: function(profile) {
+  ShowProfileData: function(profiles) {
+    let profile = profiles.values[0];
+
     Linkedin.profile = profile;
 
     Linkedin.listeners.forEach(ln => {

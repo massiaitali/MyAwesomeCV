@@ -99,8 +99,14 @@
 export default {
 	props: [ 'user' ],
 	created() {
-		let user = JSON.parse(this.user)
-		console.log(user)
+		let user = sessionStorage.getItem('user');
+
+		if (user) {
+			user = JSON.parse(user)
+			console.log(user)
+		} else {
+			console.log('No user found')
+		}
 	},
 	data() {
 		return {

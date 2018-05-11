@@ -31441,9 +31441,16 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 exports.default = {
-	props: ['exp'],
+	props: ['user'],
 	created: function created() {
-		this.expreriences = this.exp;
+		var user = sessionStorage.getItem('user');
+
+		if (user) {
+			user = JSON.parse(user);
+			console.log(user);
+		} else {
+			console.log('No user found');
+		}
 	},
 	data: function data() {
 		return {
@@ -31484,7 +31491,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-6b668346", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-6b668346", __vue__options__)
+    hotAPI.reload("data-v-6b668346", __vue__options__)
   }
 })()}
 },{"vue":49,"vue-hot-reload-api":46}],53:[function(require,module,exports){
@@ -31504,7 +31511,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = {
   data: function data() {
     return {
-      avatar: 'linkedin',
+      avatar: 'github',
       linkedin: undefined,
       github: undefined
     };
@@ -31542,10 +31549,16 @@ exports.default = {
       this.searchGithubInformations(username);
     },
     nextStep: function nextStep() {
-      console.log('TODO merge between services');
-      console.log(this.avatar);
-      console.log(this.linkedin);
-      console.log(this.github);
+      var user = {
+        firstName: this.linkedin.firstName,
+        lastName: this.linkedin.lastName,
+        name: this.github.name,
+        picture: this.avatar === 'github' ? this.github.image : undefined,
+        experiences: this.linkedin.positions.values
+      };
+
+      sessionStorage.setItem('user', JSON.stringify(user));
+      this.$router.push({ name: 'cvbase' });
     }
   }
 
@@ -31563,7 +31576,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-49591838", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-49591838", __vue__options__)
+    hotAPI.reload("data-v-49591838", __vue__options__)
   }
 })()}
 },{"../tools/Github":54,"vue":49,"vue-hot-reload-api":46}],54:[function(require,module,exports){
