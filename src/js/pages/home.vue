@@ -6,14 +6,13 @@
       </div>
       <div class="mdc-card__secondary">
         Connectez-vous sur vos différents comptes afin de récupérer toutes vos données utiles à la génération de votre CV
-        <div class="mdc-select">
+        <div class="padding">
+          <label class="mdc-floating-label">Choix de la langue</label>
           <select class="mdc-select__native-control">
             <option value="" disabled selected></option>
             <option value="fr">Français</option>
             <option value="en">English</option>
           </select>
-          <label class="mdc-floating-label">Choix de la langue</label>
-          <div class="mdc-line-ripple"></div>
         </div>
         <table>
           <thead>
