@@ -1,0 +1,123 @@
+@mixin opacity($o) {
+  opacity: $o;
+  filter:Alpha($o*100);
+}
+
+@mixin text-shadow($shadow) {
+  text-shadow: $shadow;
+}
+
+@mixin box-shadow($shadow) {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  box-shadow: $shadow;
+}
+
+@mixin border-radius($border) {
+  -webkit-border-radius: $border;
+  -moz-border-radius: $border;
+  border-radius: $border;
+}
+
+@mixin box-sizing($box) {
+  -webkit-box-sizing: $box;
+  -moz-box-sizing: $box;
+  box-sizing: $box;
+}
+
+@mixin transition-duration($duration) {
+  -webkit-transition-duration: $duration;
+  -moz-transition-duration: $duration;
+  -o-transition-duration: $duration;
+  transition-duration: $duration;
+}
+
+@mixin transition-property($prop) {
+  -webkit-transition-property: $prop;
+  -moz-transition-property: $prop;
+  -o-transition-property: $prop;
+  transition-property: $prop;
+}
+
+@mixin user-select($us) {
+  -webkit-user-select: $us;
+  -moz-user-select: $us;
+  -ms-user-select: $us;
+  user-select: $us;
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin animation($anim) {
+  -webkit-animation: $anim;
+  -moz-animation: $anim;
+  -o-animation: $anim;
+  animation: $anim;
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes $name {
+    @content
+  }
+  @-moz-keyframes $name {
+    @content
+  }
+  @-o-keyframes $name {
+    @content
+  }
+  @keyframes $name {
+    @content
+  }
+}
+
+@mixin display-flex() {
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin flex-wrap($wrap) {
+  -webkit-flex-wrap: $wrap;
+  flex-wrap: $wrap;
+}
+
+@mixin column-count($count) {
+  -webkit-column-count: $count;
+  -moz-column-count: $count;
+  column-count: $count;
+}
+
+@mixin column-gap($gap) {
+  -webkit-column-gap: $gap;
+  -moz-column-gap: $gap;
+  column-gap: $gap;
+}
+
+@mixin column-width($width) {
+  -webkit-column-width: $width;
+  -moz-column-width: $width;
+  column-width: $width;
+}
+
+@mixin column-rule($rule) {
+  -webkit-column-rule: $rule;
+  -moz-column-rule: $rule;
+  column-rule: $rule;
+}
+
+@mixin transform($trans) {
+  -webkit-transform: $trans;
+  -moz-transform: $trans;
+  -o-transform: $trans;
+  transform: $trans;
+}
+
+@mixin transform-origin($origin) {
+  -webkit-transform-origin: $origin;
+  -moz-transform-origin: $origin;
+  -o-transform-origin: $origin;
+  transform-origin: $origin;
+}

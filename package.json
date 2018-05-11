@@ -1,0 +1,30 @@
+{
+  "name": "awesome-cv",
+  "version": "1.0.0",
+  "description": "Génération automatique de CV à partir des réseaux sociaux",
+  "license": "GPL-3.0",
+  "scripts": {
+    "build": "node bin/builder.js",
+    "watch": "npm run build ; node bin/watcher.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/thomasLS64/MyAwesomeCV.git"
+  },
+  "dependencies": {
+    "vue": "^2.5.16",
+    "vue-router": "^3.0.1",
+    "ajax-request": "^1.2.3",
+    "body-parser": "^1.18.2"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.2",
+    "node-watch": "^0.5.8",
+    "babel-core": "^6.23.0",
+    "browserify": "^16.1.1",
+    "node-sass": "^4.8.3",
+    "babelify": "^8.0.0",
+    "babel-preset-env": "^1.6.1",
+    "vueify": "^9.4.1"
+  }
+}
