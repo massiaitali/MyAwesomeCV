@@ -432,30 +432,6 @@ html, body {
   display: inline-block;
   text-align: left; }
 
-@font-face {
-  font-family: "Material Icons";
-  src: url("../fonts/material-icons/MaterialIcons-RegMaterialIcons-Regular.eot?#iefix");
-  src: url("../fonts/material-icons/MaterialIcons-Regular.ttf") format("truetype"), url("../fonts/material-icons/MaterialIcons-Regular.woff") format("woff"), url("../fonts/material-icons/MaterialIcons-Regular.woff2") format("woff"), url("../fonts/material-icons/MaterialIcons-Regular.svg") format("svg");
-  font-weight: normal;
-  font-style: normal; }
-
-.material-icons {
-  font-family: "Material Icons";
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: 'liga'; }
-
 .bg-white {
   background: white; }
 
