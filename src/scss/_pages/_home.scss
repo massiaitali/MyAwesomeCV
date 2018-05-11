@@ -1,11 +1,11 @@
 #home {
-  
+
   & > .mdc-card {
     max-width: 500px;
     margin: 1em auto;
 
-    & .mdc-select {
-      padding: 1em;
+    & select {
+      display: block;
       width: 100%;
     }
   }

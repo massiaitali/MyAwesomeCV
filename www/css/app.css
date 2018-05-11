@@ -432,6 +432,9 @@ html, body {
   display: inline-block;
   text-align: left; }
 
+.padding {
+  padding: 1rem; }
+
 .mdc-card__primary {
   padding: 1rem; }
 
@@ -447,6 +450,6 @@ html, body {
 #home > .mdc-card {
   max-width: 500px;
   margin: 1em auto; }
-  #home > .mdc-card .mdc-select {
-    padding: 1em;
+  #home > .mdc-card select {
+    display: block;
     width: 100%; }
