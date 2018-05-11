@@ -18,6 +18,16 @@
 	}
 
 	& .demo-card__title  {
-		background-color: blue;
+		font-weight: bold;
+		font-size: 30px;
+	}
+	
+	& .infoExp {
+		font-weight: 100;
+		font-style: italic;
+	}
+
+	& h1 {
+		font-weight: 200;
 	}
 }
