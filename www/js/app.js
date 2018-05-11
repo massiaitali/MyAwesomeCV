@@ -22108,6 +22108,58 @@ var app = new _vue2.default({
 
 },{"../../libs/log.js":1,"./pages/cvbase.vue":8,"./pages/home.vue":9,"vue-router/dist/vue-router.js":4,"vue/dist/vue.js":5}],8:[function(require,module,exports){
 ;(function(){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = {
+	props: ['exp'],
+	created: function created() {
+		this.expreriences = this.exp;
+	},
+	data: function data() {
+		return {
+			basicInformation: {
+				firstName: 'Gregoire',
+				lastName: 'Harba',
+				birthDate: '21/03/1995',
+				title: 'Apprenti ingénieur',
+				currentOccupation: 'Apprenti',
+				formation: 'polydouille',
+				country: 'France',
+				postCode: '75015',
+				location: 'Paris'
+			},
+			experiences: [{ title: 'Lorem', content: 'ipsum...', company: 'Orange', location: 'Fr'
+			}],
+			projects: [{ title: 'KEEPER', description: 'mieux que google KEEP', techno: 'NodeJS et vueJS' }],
+			formation: [{ school: 'ppS', diploma: 'ppS', content: 'lalalalalala' }]
+		};
+	},
+
+	methods: {
+		test: function test() {}
+	}
+};
+})()
+if (module.exports.__esModule) module.exports = module.exports.default
+var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
+if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"cvbase"}},[_vm._v("\n\t\tCV Base\n\n\t\t"),_c('div',{staticClass:"mdc-layout-grid"},[_c('div',{staticClass:"mdc-layout-grid__inner"},[_c('div',{staticClass:"mdc-layout-grid__cell--span-12"},[_c('div',{staticClass:"mdc-card"},[_c('div',{staticClass:"mdc-card__primary"},[_c('h2',{staticClass:"demo-card__title mdc-typography--headline6"},[_vm._v(_vm._s(_vm.basicInformation.title))])]),_vm._v(" "),_c('div',{staticClass:"mdc-card__secondary"},[_vm._v("\n\t\t\t      \t"+_vm._s(((_vm.basicInformation.firstName) + " " + (_vm.basicInformation.lastName)))+"\n\t\t\t      ")]),_vm._v(" "),_c('div',{staticClass:"mdc-card__secondary"},[_vm._v("\n\t\t\t      \t"+_vm._s(_vm.basicInformation.birthDate)+"\n\t\t\t      ")]),_vm._v(" "),_c('div',{staticClass:"mdc-card__secondary"},[_vm._v("\n\t\t\t      \t"+_vm._s(((_vm.basicInformation.location) + " " + (_vm.basicInformation.postCode) + " " + (_vm.basicInformation.country)))+"\n\t\t\t      ")])])]),_vm._v(" "),_vm._m(0),_vm._v(" "),_c('div',{staticClass:"mdc-layout-grid__cell--span-8"},[_c('div',{staticClass:"mdc-card"},[_vm._m(1),_vm._v(" "),_vm._l((_vm.experiences),function(experience){return _c('div',{staticClass:"mdc-card__secondary"},[_c('h1',[_vm._v(" "+_vm._s(experience.title)+" ")]),_vm._v(" "+_vm._s(experience.company)+", "+_vm._s(experience.location)+"\n\t\t\t      \t"),_c('p',[_vm._v(" "+_vm._s(experience.content))])])})],2)]),_vm._v(" "),_c('div',{staticClass:"mdc-layout-grid__cell--span-12"},[_c('div',{staticClass:"mdc-card"},[_vm._m(2),_vm._v(" "),_vm._l((_vm.formation),function(s){return _c('div',{staticClass:"mdc-card__secondary"},[_c('h1',[_vm._v(_vm._s(s.school))]),_vm._v(" "),_c('span',[_vm._v(_vm._s(s.diploma)+" "+_vm._s(s.content)+" ")])])})],2)]),_vm._v(" "),_c('div',{staticClass:"mdc-layout-grid__cell--span-12"},[_c('div',{staticClass:"mdc-card"},[_vm._m(3),_vm._v(" "),_vm._l((_vm.projects),function(p){return _c('div',{staticClass:"mdc-card__secondary"},[_c('h1',[_vm._v(" "+_vm._s(p.title)+" ")]),_vm._v(" "),_c('p',[_vm._v(_vm._s(p.description))]),_vm._v(" "),_c('span',[_vm._v(" "+_vm._s(p.techno))])])})],2)])])])])}
+__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"mdc-layout-grid__cell--span-4"},[_c('div',{staticClass:"mdc-card"},[_c('div',{staticClass:"mdc-card__primary"},[_c('h2',{staticClass:"demo-card__title mdc-typography--headline6"},[_vm._v("Competence")])]),_vm._v(" "),_c('div',{staticClass:"mdc-card__secondary"},[_vm._v("\n\t\t\t        Cette personne est competente\n\t\t\t      ")])])])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"mdc-card__primary"},[_c('h2',{staticClass:"demo-card__title mdc-typography--headline6"},[_vm._v("Experience")])])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"mdc-card__primary"},[_c('h2',{staticClass:"demo-card__title mdc-typography--headline6"},[_vm._v("Formation")])])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"mdc-card__primary"},[_c('h2',{staticClass:"demo-card__title mdc-typography--headline6"},[_vm._v("Project ")])])}]
+if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-12d75211", __vue__options__)
+  } else {
+    hotAPI.rerender("data-v-12d75211", __vue__options__)
+  }
+})()}
+},{"vue":6,"vue-hot-reload-api":3}],9:[function(require,module,exports){
+;(function(){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22119,39 +22171,7 @@ if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
 __vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _vm._m(0)}
-__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"cvbase"}},[_vm._v("\n\t\tCV Base\n\n\t\t"),_c('div',{staticClass:"mdc-layout-grid"},[_c('div',{staticClass:"mdc-layout-grid__inner"},[_c('div',{staticClass:"mdc-layout-grid__cell--span-12"},[_c('div',{staticClass:"mdc-card"},[_c('div',{staticClass:"mdc-card__primary"},[_c('h2',{staticClass:"demo-card__title mdc-typography--headline6"},[_vm._v("Mes informations")])]),_vm._v(" "),_c('div',{staticClass:"mdc-card__secondary"},[_vm._v("\n\t\t\t        Ici les informations de base de type basique\n\t\t\t      ")])])]),_vm._v(" "),_c('div',{staticClass:"mdc-layout-grid__cell--span-4"},[_c('div',{staticClass:"mdc-card"},[_c('div',{staticClass:"mdc-card__primary"},[_c('h2',{staticClass:"demo-card__title mdc-typography--headline6"},[_vm._v("Competence")])]),_vm._v(" "),_c('div',{staticClass:"mdc-card__secondary"},[_vm._v("\n\t\t\t        Cette personne est competente\n\t\t\t      ")])])]),_vm._v(" "),_c('div',{staticClass:"mdc-layout-grid__cell--span-8"},[_c('div',{staticClass:"mdc-card"},[_c('div',{staticClass:"mdc-card__primary"},[_c('h2',{staticClass:"demo-card__title mdc-typography--headline6"},[_vm._v("Experience")])]),_vm._v(" "),_c('div',{staticClass:"mdc-card__secondary"},[_vm._v("\n\t\t\t        Environ 500 par heure\n\t\t\t      ")])])]),_vm._v(" "),_c('div',{staticClass:"mdc-layout-grid__cell--span-12"},[_c('div',{staticClass:"mdc-card"},[_c('div',{staticClass:"mdc-card__primary"},[_c('h2',{staticClass:"demo-card__title mdc-typography--headline6"},[_vm._v("Formation")])]),_vm._v(" "),_c('div',{staticClass:"mdc-card__secondary"},[_vm._v("\n\t\t\t        4 4 2 ça marche bien\n\t\t\t      ")])])]),_vm._v(" "),_c('div',{staticClass:"mdc-layout-grid__cell--span-12"},[_c('div',{staticClass:"mdc-card"},[_c('div',{staticClass:"mdc-card__primary"},[_c('h2',{staticClass:"demo-card__title mdc-typography--headline6"},[_vm._v("Project ")])]),_vm._v(" "),_c('div',{staticClass:"mdc-card__secondary"},[_vm._v("\n\t\t\t        Projet qualitatif de qualité non dégagée\n\t\t\t      ")])])])])])])}]
-if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), true)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-12d75211", __vue__options__)
-  } else {
-    hotAPI.reload("data-v-12d75211", __vue__options__)
-  }
-})()}
-},{"vue":6,"vue-hot-reload-api":3}],9:[function(require,module,exports){
-;(function(){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = {
-  created: function created() {
-    var select = new mdc.select.MDCSelect(document.querySelector('.mdc-select'));
-
-    select.listen('change', function () {
-      alert('Selected option at index ' + select.selectedIndex + ' with value "' + select.value + '"');
-    });
-  }
-};
-})()
-if (module.exports.__esModule) module.exports = module.exports.default
-var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
-if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _vm._m(0)}
-__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"home"}},[_c('div',{staticClass:"mdc-card"},[_c('div',{staticClass:"mdc-card__primary"},[_c('h2',{staticClass:"demo-card__title mdc-typography--headline6"},[_vm._v("Mes informations")])]),_vm._v(" "),_c('div',{staticClass:"mdc-card__secondary"},[_vm._v("\n      Connectez-vous sur vos différents comptes afin de récupérer toutes vos données utiles à la génération de votre CV\n      "),_c('div',{staticClass:"padding"},[_c('label',{attrs:{"for":"select"}},[_vm._v("Choix de la langue")]),_vm._v(" "),_c('select',{attrs:{"id":"select"}},[_c('option',{attrs:{"value":"","disabled":"","selected":""}}),_vm._v(" "),_c('option',{attrs:{"value":"fr"}},[_vm._v("Français")]),_vm._v(" "),_c('option',{attrs:{"value":"en"}},[_vm._v("English")])])]),_vm._v(" "),_c('table',[_c('thead',[_c('tr',[_c('th',[_vm._v("Réseau")]),_vm._v(" "),_c('th',[_vm._v("Options")])])]),_vm._v(" "),_c('tbody',[_c('tr',[_c('td',[_c('button',{staticClass:"mdc-button mdc-card__action mdc-card__action--button",attrs:{"type":"in/Login"}},[_vm._v("Linkedin")])]),_vm._v(" "),_c('td',[_c('div',{staticClass:"mdc-form-field"},[_c('div',{staticClass:"mdc-radio"},[_c('input',{staticClass:"mdc-radio__native-control",attrs:{"type":"radio","id":"radio-1","name":"radios"}}),_vm._v(" "),_c('div',{staticClass:"mdc-radio__background"},[_c('div',{staticClass:"mdc-radio__outer-circle"}),_vm._v(" "),_c('div',{staticClass:"mdc-radio__inner-circle"})])]),_vm._v(" "),_c('label',{attrs:{"for":"radio-1"}},[_vm._v("Utiliser la photo de profil")])])])])])])]),_vm._v(" "),_c('div',{staticClass:"mdc-card__actions"},[_c('div',{staticClass:"mdc-card__action-buttons"},[_c('button',{staticClass:"mdc-button mdc-card__action mdc-card__action--button"},[_vm._v("Générer mon CV")])])])])])}]
+__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"home"}},[_c('div',{staticClass:"mdc-card"},[_c('div',{staticClass:"mdc-card__primary"},[_c('h2',{staticClass:"demo-card__title mdc-typography--headline6"},[_vm._v("Mes informations")])]),_vm._v(" "),_c('div',{staticClass:"mdc-card__secondary"},[_vm._v("\n      Connectez-vous sur vos différents comptes afin de récupérer toutes vos données utiles à la génération de votre CV\n      "),_c('div',{staticClass:"padding"},[_c('label',{attrs:{"for":"select"}},[_vm._v("Choix de la langue")]),_vm._v(" "),_c('select',{attrs:{"id":"select"}},[_c('option',{attrs:{"value":"","disabled":"","selected":""}}),_vm._v(" "),_c('option',{attrs:{"value":"fr"}},[_vm._v("Français")]),_vm._v(" "),_c('option',{attrs:{"value":"en"}},[_vm._v("English")])])]),_vm._v(" "),_c('table',[_c('thead',[_c('tr',[_c('th',[_vm._v("Réseau")]),_vm._v(" "),_c('th',[_vm._v("Options")])])]),_vm._v(" "),_c('tbody',[_c('tr',[_c('td',[_c('script',{attrs:{"type":"in/Login"}})]),_vm._v(" "),_c('td',[_c('div',{staticClass:"mdc-form-field"},[_c('div',{staticClass:"mdc-radio"},[_c('input',{staticClass:"mdc-radio__native-control",attrs:{"type":"radio","id":"radio-linkedin","name":"radios"}}),_vm._v(" "),_c('div',{staticClass:"mdc-radio__background"},[_c('div',{staticClass:"mdc-radio__outer-circle"}),_vm._v(" "),_c('div',{staticClass:"mdc-radio__inner-circle"})])]),_vm._v(" "),_c('label',{attrs:{"for":"radio-linkedin"}},[_vm._v("Utiliser la photo de profil")])])])]),_vm._v(" "),_c('tr',[_c('td',[_c('button',{staticClass:"mdc-button mdc-card__action mdc-card__action--button"},[_vm._v("Github")])]),_vm._v(" "),_c('td',[_c('div',{staticClass:"mdc-form-field"},[_c('div',{staticClass:"mdc-radio"},[_c('input',{staticClass:"mdc-radio__native-control",attrs:{"type":"radio","id":"radio-github","name":"radios"}}),_vm._v(" "),_c('div',{staticClass:"mdc-radio__background"},[_c('div',{staticClass:"mdc-radio__outer-circle"}),_vm._v(" "),_c('div',{staticClass:"mdc-radio__inner-circle"})])]),_vm._v(" "),_c('label',{attrs:{"for":"radio-github"}},[_vm._v("Utiliser la photo de profil")])])])])])])]),_vm._v(" "),_c('div',{staticClass:"mdc-card__actions"},[_c('div',{staticClass:"mdc-card__action-buttons"},[_c('button',{staticClass:"mdc-button mdc-card__action mdc-card__action--button"},[_vm._v("Générer mon CV")])])])])])}]
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
@@ -22159,7 +22179,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-19c5ee28", __vue__options__)
   } else {
-    hotAPI.reload("data-v-19c5ee28", __vue__options__)
+    hotAPI.rerender("data-v-19c5ee28", __vue__options__)
   }
 })()}
 },{"vue":6,"vue-hot-reload-api":3}]},{},[7]);

@@ -24,18 +24,35 @@
           <tbody>
             <tr>
               <td>
-                <button class="mdc-button mdc-card__action mdc-card__action--button" type="in/Login">Linkedin</button>
+                <script type="in/Login"></script>
               </td>
               <td>
                 <div class="mdc-form-field">
                   <div class="mdc-radio">
-                    <input class="mdc-radio__native-control" type="radio" id="radio-1" name="radios">
+                    <input class="mdc-radio__native-control" type="radio" id="radio-linkedin" name="radios">
                     <div class="mdc-radio__background">
                       <div class="mdc-radio__outer-circle"></div>
                       <div class="mdc-radio__inner-circle"></div>
                     </div>
                   </div>
-                  <label for="radio-1">Utiliser la photo de profil</label>
+                  <label for="radio-linkedin">Utiliser la photo de profil</label>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button class="mdc-button mdc-card__action mdc-card__action--button">Github</button>
+              </td>
+              <td>
+                <div class="mdc-form-field">
+                  <div class="mdc-radio">
+                    <input class="mdc-radio__native-control" type="radio" id="radio-github" name="radios">
+                    <div class="mdc-radio__background">
+                      <div class="mdc-radio__outer-circle"></div>
+                      <div class="mdc-radio__inner-circle"></div>
+                    </div>
+                  </div>
+                  <label for="radio-github">Utiliser la photo de profil</label>
                 </div>
               </td>
             </tr>
@@ -51,17 +68,10 @@
   </div>
 </template>
 
+
 <script>
 //import Linkedin from '../tools/Linkedin';
 
 
-export default {
-  created() {
-    const select = new mdc.select.MDCSelect(document.querySelector('.mdc-select'));
-
-    select.listen('change', () => {
-      alert(`Selected option at index ${select.selectedIndex} with value "${select.value}"`);
-    });
-  }
-}
+export default { }
 </script>
