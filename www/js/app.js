@@ -22086,25 +22086,51 @@ var _home = require('./pages/home.vue');
 
 var _home2 = _interopRequireDefault(_home);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _cvbase = require('./pages/cvbase.vue');
 
-// Local lib
-_vue2.default.use(_vueRouter2.default);
+var _cvbase2 = _interopRequireDefault(_cvbase);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Import Pages
 
 
 // External lib
+_vue2.default.use(_vueRouter2.default); // Local lib
 
 
 var app = new _vue2.default({
   el: '#app',
   router: new _vueRouter2.default({
-    routes: [{ path: '/', name: 'home', component: _home2.default }]
+    routes: [{ path: '/', name: 'home', component: _home2.default }, { path: '/cvbase', name: 'cvbase', component: _cvbase2.default }]
   })
 });
 
-},{"../../libs/log.js":1,"./pages/home.vue":8,"vue-router/dist/vue-router.js":4,"vue/dist/vue.js":5}],8:[function(require,module,exports){
+},{"../../libs/log.js":1,"./pages/cvbase.vue":8,"./pages/home.vue":9,"vue-router/dist/vue-router.js":4,"vue/dist/vue.js":5}],8:[function(require,module,exports){
+;(function(){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = {};
+})()
+if (module.exports.__esModule) module.exports = module.exports.default
+var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
+if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _vm._m(0)}
+__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"cvbase"}},[_vm._v("\n\t\tCV Base\n\n\t\t"),_c('div',{staticClass:"mdc-layout-grid"},[_c('div',{staticClass:"mdc-layout-grid__inner"},[_c('div',{staticClass:"mdc-layout-grid__cell--span-12 border"},[_vm._v("\n\t\t      Basique information \n\t\t    ")]),_vm._v(" "),_c('div',{staticClass:"mdc-layout-grid__cell--span-4 border"},[_vm._v("Con pétance")]),_vm._v(" "),_c('div',{staticClass:"mdc-layout-grid__cell--span-8 border"},[_vm._v("Les formations du monsieur ")]),_vm._v(" "),_c('div',{staticClass:"mdc-layout-grid__cell--span-12 border"},[_vm._v(" #FROMATION ")])])])])}]
+if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-12d75211", __vue__options__)
+  } else {
+    hotAPI.rerender("data-v-12d75211", __vue__options__)
+  }
+})()}
+},{"vue":6,"vue-hot-reload-api":3}],9:[function(require,module,exports){
 ;(function(){
 "use strict";
 
@@ -22123,9 +22149,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3cbd7de4", __vue__options__)
+    hotAPI.createRecord("data-v-19c5ee28", __vue__options__)
   } else {
-    hotAPI.reload("data-v-3cbd7de4", __vue__options__)
+    hotAPI.rerender("data-v-19c5ee28", __vue__options__)
   }
 })()}
 },{"vue":6,"vue-hot-reload-api":3}]},{},[7]);

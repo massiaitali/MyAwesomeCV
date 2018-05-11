@@ -523,3 +523,6 @@ html, body {
       vertical-align: top; }
       #home > .table > .cell:first-child {
         width: 450px; } }
+
+#cvbase .border {
+  border-style: solid; }
