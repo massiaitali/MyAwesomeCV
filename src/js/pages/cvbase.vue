@@ -97,13 +97,31 @@
 
 <script>
 export default {
-	props: [ 'user' ],
 	created() {
 		let user = sessionStorage.getItem('user');
 
 		if (user) {
 			user = JSON.parse(user)
 			console.log(user)
+			this.basicInformation.firstName = user.firstName;
+			this.basicInformation.lastName =  user.lastName;
+			this.basicInformation.picture = user.picture;
+			
+			let elt = this;
+
+			this.experiences = [];
+			user.experiences.forEach(function(exp) {
+				let res = { title : exp.title, content : exp.summary, company : exp.company.name, location : exp.location.name };
+				elt.experiences.push(res);
+			});
+
+			this.projects = [];
+			user.projects.forEach(function (p) {
+				let res = {title : p.name, description : p.description}
+
+				elt.projects.push(res);
+			});
+
 		} else {
 			console.log('No user found')
 		}
@@ -111,7 +129,7 @@ export default {
 	data() {
 		return {
 			basicInformation : { 
-				firstName 				: 'Gregoire',
+				firstName 					: 'Gregoire',
 				lastName 					: 'Harba',
 				birthDate					: '21/03/1995',
 				title 						: 'Apprenti ingénieur',
