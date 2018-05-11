@@ -24,7 +24,7 @@
           <tbody>
             <tr>
               <td>
-                <button class="mdc-button mdc-card__action mdc-card__action--button" type="in/Login">Linkedin</button>
+                <script type="in/Login"></script>
               </td>
               <td>
                 <div class="mdc-form-field">
@@ -67,6 +67,7 @@
     </div>
   </div>
 </template>
+
 
 <script>
 //import Linkedin from '../tools/Linkedin';
