@@ -1,49 +1,7 @@
-.bg-white { background: white; }
-
-.padding {
-  padding: 1em;
+.mdc-card__primary {
+  padding: 1rem;
 }
 
-.float-right {
-  float: right;
-}
-
-.cursor-pointer {
-  cursor: pointer;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.page-wrapper {
-  width: 100%;
-  max-width: 1024px;
-  margin: 0 auto;
-}
-
-.vertical-padding {
-  padding-top: 1em;
-  padding-bottom: 1em;
-}
-
-.vertical-large-padding {
-  padding-top: 3em;
-  padding-bottom: 3em;
-}
-
-.table {
-  display: table;
-  height: 100%;
-  width: 100%;
-
-  & > .cell {
-    display: table-cell;
-
-    @for $i from 1 through 10 {
-      &.cell-#{$i} {
-        width: 100% / $i;
-      }
-    }
-  }
+.mdc-card__secondary {
+  padding: 0 1rem 8px;
 }
