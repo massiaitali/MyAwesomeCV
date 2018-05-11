@@ -130,7 +130,8 @@ export default {
           lastName: this.linkedin.lastName,
           name: this.github.name,
           picture: this.avatar === 'github' ? this.github.image : undefined,
-          experiences: this.linkedin.positions.values
+          experiences: this.linkedin.positions.values,
+          projects: this.github.repos
         };
 
       sessionStorage.setItem('user', JSON.stringify(user))

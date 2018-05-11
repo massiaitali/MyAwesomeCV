@@ -31491,7 +31491,7 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-6b668346", __vue__options__)
   } else {
-    hotAPI.reload("data-v-6b668346", __vue__options__)
+    hotAPI.rerender("data-v-6b668346", __vue__options__)
   }
 })()}
 },{"vue":49,"vue-hot-reload-api":46}],53:[function(require,module,exports){
@@ -31554,7 +31554,8 @@ exports.default = {
         lastName: this.linkedin.lastName,
         name: this.github.name,
         picture: this.avatar === 'github' ? this.github.image : undefined,
-        experiences: this.linkedin.positions.values
+        experiences: this.linkedin.positions.values,
+        projects: this.github.repos
       };
 
       sessionStorage.setItem('user', JSON.stringify(user));
