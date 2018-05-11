@@ -22111,6 +22111,15 @@ var app = new _vue2.default({
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+<<<<<<< HEAD
+=======
+
+var _Linkedin = require('../tools/Linkedin');
+
+var _Linkedin2 = _interopRequireDefault(_Linkedin);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 exports.default = {};
 })()
 if (module.exports.__esModule) module.exports = module.exports.default
@@ -22123,9 +22132,24 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-49591838", __vue__options__)
+    hotAPI.createRecord("data-v-3cbd7de4", __vue__options__)
   } else {
     hotAPI.rerender("data-v-49591838", __vue__options__)
   }
 })()}
-},{"vue":6,"vue-hot-reload-api":3}]},{},[7]);
+},{"../tools/Linkedin":9,"vue":6,"vue-hot-reload-api":3}],9:[function(require,module,exports){
+"use strict";
+
+function OnLinkedInFrameworkLoad() {
+  IN.Event.on(IN, "auth", OnLinkedInAuth);
+}
+function OnLinkedInAuth() {
+  IN.API.Profile("me").fields(['first-name', 'last-name', // Add these to get the name
+  'industry', 'date-of-birth', 'educations', 'positions' // Add this one to get the job history
+  ]).result(ShowProfileData);
+}
+function ShowProfileData(profiles) {
+  console.log(profiles);
+}
+
+},{}]},{},[7]);
