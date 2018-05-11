@@ -5,8 +5,9 @@
   "license": "GPL-3.0",
   "scripts": {
     "build": "node bin/builder.js",
+    "serve": "node bin/server.js",
     "watch": "npm run build ; node bin/watcher.js",
-    "serve": "npm run build ; node bin/server.js"
+    "bs": "npm run build ; npm run serve"
   },
   "repository": {
     "type": "git",

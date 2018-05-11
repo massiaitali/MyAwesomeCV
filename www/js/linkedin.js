@@ -1,4 +1,16 @@
 window.Linkedin = {
+
+  profile: undefined,
+  listeners: [],
+
+  getProfile: function(ln) {
+    if (!Linkedin.profiles) {
+      Linkedin.listeners.push(ln)
+    } else {
+      ln(Linkedin.profile)
+    }
+  },
+
   init: function() {
     IN.Event.on(IN, "auth", Linkedin.OnLinkedInAuth);
   },
@@ -13,7 +25,12 @@ window.Linkedin = {
       .result(Linkedin.ShowProfileData);
   },
 
-  ShowProfileData: function(profiles) {
-    console.log(profiles);
+  ShowProfileData: function(profile) {
+    Linkedin.profile = profile;
+
+    Linkedin.listeners.forEach(ln => {
+      ln(profile)
+    })
   }
+
 }

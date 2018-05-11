@@ -18,18 +18,23 @@
           <thead>
             <tr>
               <th>Réseau</th>
+              <th>Etat</th>
               <th>Options</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>
-                <script type="in/Login"></script>
+                LinkedIn
+              </td>
+              <td>
+                <script type="in/Login" v-if="!linkedin"></script>
+                <span v-else>Connecté</span>
               </td>
               <td>
                 <div class="mdc-form-field">
                   <div class="mdc-radio">
-                    <input class="mdc-radio__native-control" type="radio" id="radio-linkedin" name="radios">
+                    <input class="mdc-radio__native-control" type="radio" id="radio-linkedin" name="avatar" v-model="avatar" value="linkedin">
                     <div class="mdc-radio__background">
                       <div class="mdc-radio__outer-circle"></div>
                       <div class="mdc-radio__inner-circle"></div>
@@ -40,13 +45,15 @@
               </td>
             </tr>
             <tr>
+              <td>Github</td>
               <td>
-                <button class="mdc-button mdc-card__action mdc-card__action--button" v-on:click="setGithubUsername">Github</button>
+                <button class="mdc-button mdc-card__action mdc-card__action--button" v-on:click="setGithubUsername" v-if="!github">Github</button>
+                <span v-else>Connecté</span>
               </td>
               <td>
                 <div class="mdc-form-field">
                   <div class="mdc-radio">
-                    <input class="mdc-radio__native-control" type="radio" id="radio-github" name="radios">
+                    <input class="mdc-radio__native-control" type="radio" id="radio-github" name="avatar" v-model="avatar" value="github">
                     <div class="mdc-radio__background">
                       <div class="mdc-radio__outer-circle"></div>
                       <div class="mdc-radio__inner-circle"></div>
@@ -61,7 +68,7 @@
       </div>
       <div class="mdc-card__actions">
         <div class="mdc-card__action-buttons">
-          <button class="mdc-button mdc-card__action mdc-card__action--button">Générer mon CV</button>
+          <button class="mdc-button mdc-card__action mdc-card__action--button" v-on:click="nextStep">Générer mon CV</button>
         </div>
       </div>
     </div>
@@ -75,18 +82,53 @@ import Github from '../tools/Github';
 
 
 export default {
+  
+  data() {
+    return {
+      avatar: 'linkedin',
+      linkedin: undefined,
+      github: undefined
+    }
+  },
+
+  created() {
+    let githubUsername = sessionStorage.getItem('github_username'),
+        elt = this;
+
+    Linkedin.getProfile(profile => {
+      elt.linkedin = profile;
+    })
+
+    if (githubUsername) {
+      this.searchGithubInformations(githubUsername)
+    }
+  },
 
   methods: {
-    setGithubUsername() {
-      const username = prompt('Quel est votre pseudo Github ?')
+    searchGithubInformations(username) {
+      let elt = this;
 
       Github.getAllUserDatas(username, (err, user) => {
         if (!err) {
-          console.log(user)
+          sessionStorage.setItem('github_username', username)
+          elt.github = user;
         } else {
           console.log(err)
         }
       })
+    },
+
+    setGithubUsername() {
+      const username = prompt('Quel est votre pseudo Github ?')
+
+      this.searchGithubInformations(username)
+    },
+
+    nextStep() {
+      console.log('TODO merge between services');
+      console.log(this.avatar)
+      console.log(this.linkedin)
+      console.log(this.github)
     }
   }
 
