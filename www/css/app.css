@@ -456,3 +456,19 @@ html, body {
 
 #cvbase .border {
   border-style: solid; }
+
+#cvbase .profile {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 12%;
+  height: 40%; }
+
+#cvbase .top {
+  text-align: center; }
+
+#cvbase .secRow {
+  border-collapse: collapse; }
+
+#cvbase .demo-card__title {
+  background-color: blue; }

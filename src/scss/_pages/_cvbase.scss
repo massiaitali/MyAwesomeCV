@@ -3,5 +3,21 @@
 	& .border {
 		border-style: solid;
 	}
-	
+	& .profile {
+		display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 12%;
+    height: 40%	
+	}
+	& .top {
+		text-align: center;
+	}
+	& .secRow {
+		border-collapse: collapse;
+	}
+
+	& .demo-card__title  {
+		background-color: blue;
+	}
 }

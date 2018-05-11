@@ -4,24 +4,40 @@
 
 		<div class="mdc-layout-grid">
 		  <div class="mdc-layout-grid__inner">
-		    <div class="mdc-layout-grid__cell--span-12">
-		      <div class="mdc-card">
-			      <div class="mdc-card__primary">
-			        <h2 class="demo-card__title mdc-typography--headline6">{{ basicInformation.title }}</h2>
-			      </div>
-			      <div class="mdc-card__secondary">
-			      	{{ `${basicInformation.firstName} ${basicInformation.lastName}` }}
-			      </div>
-			      <div class="mdc-card__secondary">
-			      	{{ basicInformation.birthDate }}
-			      </div>
-			      <div class="mdc-card__secondary">
-			      	{{ `${basicInformation.location} ${basicInformation.postCode} ${basicInformation.country}` }}
-			      </div>
-      		</div>
-    		</div>
+			  
+		    <div class="mdc-layout-grid__cell--span-12 top">
+     			<div class="mdc-layout-grid">
+		  			<div class="mdc-layout-grid__inner">
+
+			      	<div class="mdc-layout-grid__cell--span-12">
+				  			<img v-bind:src="basicInformation.picture" v-if="basicInformation.picture" class="profile">
+				      					    
+					        <h2 >{{ basicInformation.title }}</h2>
+					    		<p>
+					      	{{ `${basicInformation.firstName} ${basicInformation.lastName}` }}
+					    		</p>
+					      	
+					      	<p>
+					      	{{ basicInformation.birthDate }}
+					      	</p>
+
+					      	<p>
+					      	{{ `${experiences[0].company} ${formation[0].school}` }}
+					    		</p>
+					    		<p>
+					      	{{ `${basicInformation.location} ${basicInformation.postCode} ${basicInformation.country}` }}
+			    				</p>
+			    		</div>
+
+			    		<div class="mdc-layout-grid__cell--span-12 secRow">
+			    			{{ basicInformation.simpleDescription }}
+			    		</div>
+
+		    		</div>
+    			</div>
+    	</div>
 		  
-			  <div class="mdc-layout-grid__cell--span-4">
+			  <div class="mdc-layout-grid__cell--span-4 secRow">
 			  	<div class="mdc-card">
 			      <div class="mdc-card__primary">
 			        <h2 class="demo-card__title mdc-typography--headline6">Competence</h2>
@@ -32,7 +48,7 @@
       		</div>
 			  </div>
 			  
-			  <div class="mdc-layout-grid__cell--span-8">
+			  <div class="mdc-layout-grid__cell--span-8 secRow">
 			  	<div class="mdc-card">
 			      <div class="mdc-card__primary">
 			        <h2 class="demo-card__title mdc-typography--headline6">Experience</h2>
@@ -90,7 +106,9 @@ export default {
 				formation 				: 'polydouille',
 				country 					: 'France',
 				postCode 					: '75015',
-				location 					: 'Paris'
+				location 					: 'Paris',
+				simpleDescription : "Développeur Web depuis 3 ans au sein d\'Orange, j\'aime être force de proposition pour répondre à des problématiques techniques et humaines. Investi dans les relation client, je suis toujours actif pour recueillir leur avis et j\'ai l\'habitude de présenter les projets de façon claire et concise. La formation des utilisateurs est aussi pour moi un point capital et je suis à l\'écoute de toutes personnes avec qui je suis amené à avoir des interactions.Les challenges techniques sont pour moi les plus importants vecteurs de motivation",
+				picture						: 'https://media.licdn.com/dms/image/C5603AQF6jp70EP7KnA/profile-displayphoto-shrink_200_200/0?e=1531353600&v=beta&t=kRgNoDYxcnE44fdlFm68fLWLR9XrGm7mnu4n-89Tu-A'
 			},
 			experiences : [
 				{ title: 'Lorem', content: 'ipsum...', company: 'Orange', location: 'Fr'
