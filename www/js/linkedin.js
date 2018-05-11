@@ -18,9 +18,9 @@ window.Linkedin = {
   OnLinkedInAuth: function() {
     IN.API
       .Profile("me")
-      .fields([ 'first-name', 'last-name', // Add these to get the name
+      .fields([ 'first-name', 'last-name', 
                 'industry', 'date-of-birth', 'educations',
-                'positions' // Add this one to get the job history
+                'positions', 'picture-url' 
       ])
       .result(Linkedin.ShowProfileData);
   },

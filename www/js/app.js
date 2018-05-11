@@ -31506,9 +31506,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-12d75211", __vue__options__)
+    hotAPI.createRecord("data-v-712e09b3", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-12d75211", __vue__options__)
+    hotAPI.rerender("data-v-712e09b3", __vue__options__)
   }
 })()}
 },{"vue":49,"vue-hot-reload-api":46}],53:[function(require,module,exports){
@@ -31566,11 +31566,12 @@ exports.default = {
       this.searchGithubInformations(username);
     },
     nextStep: function nextStep() {
+      console.log(this.linkedin);
       var user = {
         firstName: this.linkedin.firstName,
         lastName: this.linkedin.lastName,
         name: this.github.name,
-        picture: this.avatar === 'github' ? this.github.image : undefined,
+        picture: this.avatar === 'github' ? this.github.image : this.linkedin.pictureUrl,
         experiences: this.linkedin.positions.values,
         projects: this.github.repos
       };
@@ -31592,9 +31593,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-19c5ee28", __vue__options__)
+    hotAPI.createRecord("data-v-3cbd7de4", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-19c5ee28", __vue__options__)
+    hotAPI.rerender("data-v-3cbd7de4", __vue__options__)
   }
 })()}
 },{"../tools/Github":54,"vue":49,"vue-hot-reload-api":46}],54:[function(require,module,exports){
