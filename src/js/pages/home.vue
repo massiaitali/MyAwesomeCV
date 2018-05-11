@@ -41,7 +41,7 @@
             </tr>
             <tr>
               <td>
-                <button class="mdc-button mdc-card__action mdc-card__action--button">Github</button>
+                <button class="mdc-button mdc-card__action mdc-card__action--button" v-on:click="setGithubUsername">Github</button>
               </td>
               <td>
                 <div class="mdc-form-field">
@@ -71,7 +71,24 @@
 
 <script>
 //import Linkedin from '../tools/Linkedin';
+import Github from '../tools/Github';
 
 
-export default { }
+export default {
+
+  methods: {
+    setGithubUsername() {
+      const username = prompt('Quel est votre pseudo Github ?')
+
+      Github.getAllUserDatas(username, (err, user) => {
+        if (!err) {
+          console.log(user)
+        } else {
+          console.log(err)
+        }
+      })
+    }
+  }
+
+}
 </script>
