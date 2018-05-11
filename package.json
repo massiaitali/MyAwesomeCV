@@ -5,7 +5,8 @@
   "license": "GPL-3.0",
   "scripts": {
     "build": "node bin/builder.js",
-    "watch": "npm run build ; node bin/watcher.js"
+    "watch": "npm run build ; node bin/watcher.js",
+    "serve": "npm run build ; node bin/server.js"
   },
   "repository": {
     "type": "git",
@@ -15,7 +16,7 @@
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
     "ajax-request": "^1.2.3",
-    "body-parser": "^1.18.2"
+    "express": "^4.16.3"
   },
   "devDependencies": {
     "browser-sync": "^2.18.2",
