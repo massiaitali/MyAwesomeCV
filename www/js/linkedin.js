@@ -15,6 +15,10 @@ window.Linkedin = {
     IN.Event.on(IN, "auth", Linkedin.OnLinkedInAuth);
   },
 
+  logOut: function(fn) {
+    IN.User.logout(fn);
+  },
+
   OnLinkedInAuth: function() {
     IN.API
       .Profile("me")

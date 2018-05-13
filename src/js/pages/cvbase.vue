@@ -102,7 +102,7 @@ export default {
 
 		if (user) {
 			user = JSON.parse(user)
-			console.log(user)
+
 			this.basicInformation.firstName = user.firstName;
 			this.basicInformation.lastName =  user.lastName;
 			this.basicInformation.picture = user.picture;

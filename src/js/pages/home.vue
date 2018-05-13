@@ -69,6 +69,7 @@
       <div class="mdc-card__actions">
         <div class="mdc-card__action-buttons">
           <button class="mdc-button mdc-card__action mdc-card__action--button" v-on:click="nextStep">Générer mon CV</button>
+          <button class="mdc-button mdc-card__action mdc-card__action--button" v-on:click="logout" v-if="linkedin || github">Déconnexion</button>
         </div>
       </div>
     </div>
@@ -122,6 +123,17 @@ export default {
       const username = prompt('Quel est votre pseudo Github ?')
 
       this.searchGithubInformations(username)
+    },
+
+    logout() {
+      let elt = this;
+
+      this.github = undefined;
+      
+      sessionStorage.removeItem('github_username')
+      Linkedin.logOut(() => {
+        elt.linkedin = undefined;
+      })
     },
 
     nextStep() {
