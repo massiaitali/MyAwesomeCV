@@ -546,7 +546,16 @@ table.table {
 
 #cvbase .infoExp {
   font-weight: 100;
-  font-style: italic; }
+  font-style: italic;
+  font-size: 15px; }
 
 #cvbase h1 {
   font-weight: 200; }
+
+#cvbase img {
+  height: 2em;
+  width: 2em; }
+
+#cvbase .titleIcon {
+  vertical-align: middle;
+  margin-right: 0.5em; }

@@ -25,9 +25,20 @@
 	& .infoExp {
 		font-weight: 100;
 		font-style: italic;
+		font-size: 15px;
 	}
 
 	& h1 {
 		font-weight: 200;
+	}
+
+	& img {
+		height: 2em;
+		width:  2em;
+	}
+
+	& .titleIcon {
+		vertical-align: middle;
+		margin-right: 0.5em;
 	}
 }
