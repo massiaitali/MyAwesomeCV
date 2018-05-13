@@ -1,25 +1,25 @@
 <template>
   <div id="home">
-    <div class="mdc-card">
-      <div class="mdc-card__primary">
-        <h2 class="demo-card__title mdc-typography--headline6">Mes informations</h2>
+
+    <div class="card">
+      <div class="card-primary">
+        <h1>Mes informations</h1>
       </div>
-      <div class="mdc-card__secondary">
+      <div class="card-secondary">
         Connectez-vous sur vos différents comptes afin de récupérer toutes vos données utiles à la génération de votre CV
         <div class="padding">
           <label for="select">Choix de la langue</label>
           <select id="select">
-            <option value="" disabled selected></option>
-            <option value="fr">Français</option>
+            <option value="fr" selected>Français</option>
             <option value="en">English</option>
           </select>
         </div>
-        <table>
+        <table class="table full-width table-centered">
           <thead>
             <tr>
               <th>Réseau</th>
-              <th>Etat</th>
-              <th>Options</th>
+              <th>Action</th>
+              <th>Avatar</th>
             </tr>
           </thead>
           <tbody>
@@ -28,50 +28,34 @@
                 LinkedIn
               </td>
               <td>
-                <script type="in/Login" v-if="!linkedin"></script>
-                <span v-else>Connecté</span>
+                <button class="btn btn-primary" v-on:click="logInLinkedin" v-if="!linkedin">Connexion</button>
+                <button class="btn" v-on:click="logOutLinkedin" v-else>Déconnexion</button>
               </td>
               <td>
-                <div class="mdc-form-field">
-                  <div class="mdc-radio">
-                    <input class="mdc-radio__native-control" type="radio" id="radio-linkedin" name="avatar" v-model="avatar" value="linkedin">
-                    <div class="mdc-radio__background">
-                      <div class="mdc-radio__outer-circle"></div>
-                      <div class="mdc-radio__inner-circle"></div>
-                    </div>
-                  </div>
-                  <label for="radio-linkedin">Utiliser la photo de profil</label>
-                </div>
+                <input type="radio" name="avatar" v-model="avatar" value="linkedin">
               </td>
             </tr>
             <tr>
               <td>Github</td>
               <td>
-                <button class="mdc-button mdc-card__action mdc-card__action--button" v-on:click="setGithubUsername" v-if="!github">Github</button>
-                <span v-else>Connecté</span>
+                <button class="btn btn-primary" v-on:click="setGithubUsername" v-if="!github">Connexion</button>
+                <button class="btn" v-on:click="resetGithub" v-else>Déconnexion</button>
               </td>
               <td>
-                <div class="mdc-form-field">
-                  <div class="mdc-radio">
-                    <input class="mdc-radio__native-control" type="radio" id="radio-github" name="avatar" v-model="avatar" value="github">
-                    <div class="mdc-radio__background">
-                      <div class="mdc-radio__outer-circle"></div>
-                      <div class="mdc-radio__inner-circle"></div>
-                    </div>
-                  </div>
-                  <label for="radio-github">Utiliser la photo de profil</label>
-                </div>
+                <input type="radio" name="avatar" v-model="avatar" value="github">
               </td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div class="mdc-card__actions">
-        <div class="mdc-card__action-buttons">
-          <button class="mdc-button mdc-card__action mdc-card__action--button" v-on:click="nextStep">Générer mon CV</button>
-          <button class="mdc-button mdc-card__action mdc-card__action--button" v-on:click="logout" v-if="linkedin || github">Déconnexion</button>
-        </div>
+      <div class="card-actions">
+        <button class="btn" v-on:click="logout" v-if="linkedin || github">Déconnexion</button>
+        <button class="float-right btn btn-primary" v-on:click="nextStep">Générer mon CV</button>
       </div>
+    </div>
+
+    <div style="visibility: hidden">
+      <script id="linkedinBtn" type="in/Login"></script>
     </div>
   </div>
 </template>
@@ -125,15 +109,29 @@ export default {
       this.searchGithubInformations(username)
     },
 
-    logout() {
-      let elt = this;
-
-      this.github = undefined;
-      
+    resetGithub() {
       sessionStorage.removeItem('github_username')
+      this.github = undefined;
+    },
+
+    logInLinkedin() {
+      document
+        .getElementById('linkedinBtn')
+        .previousSibling
+        .getElementsByTagName('a')[0]
+        .click()
+    },
+
+    logOutLinkedin() {
+      let elt = this;
       Linkedin.logOut(() => {
         elt.linkedin = undefined;
       })
+    },
+
+    logout() {
+      this.resetGithub()
+      this.logOutLinkedin()
     },
 
     nextStep() {

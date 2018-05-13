@@ -31565,15 +31565,22 @@ exports.default = {
 
       this.searchGithubInformations(username);
     },
-    logout: function logout() {
-      var elt = this;
-
-      this.github = undefined;
-
+    resetGithub: function resetGithub() {
       sessionStorage.removeItem('github_username');
+      this.github = undefined;
+    },
+    logInLinkedin: function logInLinkedin() {
+      document.getElementById('linkedinBtn').previousSibling.getElementsByTagName('a')[0].click();
+    },
+    logOutLinkedin: function logOutLinkedin() {
+      var elt = this;
       Linkedin.logOut(function () {
         elt.linkedin = undefined;
       });
+    },
+    logout: function logout() {
+      this.resetGithub();
+      this.logOutLinkedin();
     },
     nextStep: function nextStep() {
       console.log(this.linkedin);
@@ -31596,8 +31603,8 @@ exports.default = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"home"}},[_c('div',{staticClass:"mdc-card"},[_vm._m(0),_vm._v(" "),_c('div',{staticClass:"mdc-card__secondary"},[_vm._v("\n      Connectez-vous sur vos différents comptes afin de récupérer toutes vos données utiles à la génération de votre CV\n      "),_vm._m(1),_vm._v(" "),_c('table',[_vm._m(2),_vm._v(" "),_c('tbody',[_c('tr',[_c('td',[_vm._v("\n              LinkedIn\n            ")]),_vm._v(" "),_c('td',[(!_vm.linkedin)?_c('script',{attrs:{"type":"in/Login"}}):_c('span',[_vm._v("Connecté")])]),_vm._v(" "),_c('td',[_c('div',{staticClass:"mdc-form-field"},[_c('div',{staticClass:"mdc-radio"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.avatar),expression:"avatar"}],staticClass:"mdc-radio__native-control",attrs:{"type":"radio","id":"radio-linkedin","name":"avatar","value":"linkedin"},domProps:{"checked":_vm._q(_vm.avatar,"linkedin")},on:{"change":function($event){_vm.avatar="linkedin"}}}),_vm._v(" "),_vm._m(3)]),_vm._v(" "),_c('label',{attrs:{"for":"radio-linkedin"}},[_vm._v("Utiliser la photo de profil")])])])]),_vm._v(" "),_c('tr',[_c('td',[_vm._v("Github")]),_vm._v(" "),_c('td',[(!_vm.github)?_c('button',{staticClass:"mdc-button mdc-card__action mdc-card__action--button",on:{"click":_vm.setGithubUsername}},[_vm._v("Github")]):_c('span',[_vm._v("Connecté")])]),_vm._v(" "),_c('td',[_c('div',{staticClass:"mdc-form-field"},[_c('div',{staticClass:"mdc-radio"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.avatar),expression:"avatar"}],staticClass:"mdc-radio__native-control",attrs:{"type":"radio","id":"radio-github","name":"avatar","value":"github"},domProps:{"checked":_vm._q(_vm.avatar,"github")},on:{"change":function($event){_vm.avatar="github"}}}),_vm._v(" "),_vm._m(4)]),_vm._v(" "),_c('label',{attrs:{"for":"radio-github"}},[_vm._v("Utiliser la photo de profil")])])])])])])]),_vm._v(" "),_c('div',{staticClass:"mdc-card__actions"},[_c('div',{staticClass:"mdc-card__action-buttons"},[_c('button',{staticClass:"mdc-button mdc-card__action mdc-card__action--button",on:{"click":_vm.nextStep}},[_vm._v("Générer mon CV")]),_vm._v(" "),(_vm.linkedin || _vm.github)?_c('button',{staticClass:"mdc-button mdc-card__action mdc-card__action--button",on:{"click":_vm.logout}},[_vm._v("Déconnexion")]):_vm._e()])])])])}
-__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"mdc-card__primary"},[_c('h2',{staticClass:"demo-card__title mdc-typography--headline6"},[_vm._v("Mes informations")])])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"padding"},[_c('label',{attrs:{"for":"select"}},[_vm._v("Choix de la langue")]),_vm._v(" "),_c('select',{attrs:{"id":"select"}},[_c('option',{attrs:{"value":"","disabled":"","selected":""}}),_vm._v(" "),_c('option',{attrs:{"value":"fr"}},[_vm._v("Français")]),_vm._v(" "),_c('option',{attrs:{"value":"en"}},[_vm._v("English")])])])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('thead',[_c('tr',[_c('th',[_vm._v("Réseau")]),_vm._v(" "),_c('th',[_vm._v("Etat")]),_vm._v(" "),_c('th',[_vm._v("Options")])])])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"mdc-radio__background"},[_c('div',{staticClass:"mdc-radio__outer-circle"}),_vm._v(" "),_c('div',{staticClass:"mdc-radio__inner-circle"})])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"mdc-radio__background"},[_c('div',{staticClass:"mdc-radio__outer-circle"}),_vm._v(" "),_c('div',{staticClass:"mdc-radio__inner-circle"})])}]
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"home"}},[_c('div',{staticClass:"card"},[_vm._m(0),_vm._v(" "),_c('div',{staticClass:"card-secondary"},[_vm._v("\n      Connectez-vous sur vos différents comptes afin de récupérer toutes vos données utiles à la génération de votre CV\n      "),_vm._m(1),_vm._v(" "),_c('table',{staticClass:"table full-width table-centered"},[_vm._m(2),_vm._v(" "),_c('tbody',[_c('tr',[_c('td',[_vm._v("\n              LinkedIn\n            ")]),_vm._v(" "),_c('td',[(!_vm.linkedin)?_c('button',{staticClass:"btn btn-primary",on:{"click":_vm.logInLinkedin}},[_vm._v("Connexion")]):_c('button',{staticClass:"btn",on:{"click":_vm.logOutLinkedin}},[_vm._v("Déconnexion")])]),_vm._v(" "),_c('td',[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.avatar),expression:"avatar"}],attrs:{"type":"radio","name":"avatar","value":"linkedin"},domProps:{"checked":_vm._q(_vm.avatar,"linkedin")},on:{"change":function($event){_vm.avatar="linkedin"}}})])]),_vm._v(" "),_c('tr',[_c('td',[_vm._v("Github")]),_vm._v(" "),_c('td',[(!_vm.github)?_c('button',{staticClass:"btn btn-primary",on:{"click":_vm.setGithubUsername}},[_vm._v("Connexion")]):_c('button',{staticClass:"btn",on:{"click":_vm.resetGithub}},[_vm._v("Déconnexion")])]),_vm._v(" "),_c('td',[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.avatar),expression:"avatar"}],attrs:{"type":"radio","name":"avatar","value":"github"},domProps:{"checked":_vm._q(_vm.avatar,"github")},on:{"change":function($event){_vm.avatar="github"}}})])])])])]),_vm._v(" "),_c('div',{staticClass:"card-actions"},[(_vm.linkedin || _vm.github)?_c('button',{staticClass:"btn",on:{"click":_vm.logout}},[_vm._v("Déconnexion")]):_vm._e(),_vm._v(" "),_c('button',{staticClass:"float-right btn btn-primary",on:{"click":_vm.nextStep}},[_vm._v("Générer mon CV")])])]),_vm._v(" "),_vm._m(3)])}
+__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"card-primary"},[_c('h1',[_vm._v("Mes informations")])])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"padding"},[_c('label',{attrs:{"for":"select"}},[_vm._v("Choix de la langue")]),_vm._v(" "),_c('select',{attrs:{"id":"select"}},[_c('option',{attrs:{"value":"fr","selected":""}},[_vm._v("Français")]),_vm._v(" "),_c('option',{attrs:{"value":"en"}},[_vm._v("English")])])])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('thead',[_c('tr',[_c('th',[_vm._v("Réseau")]),_vm._v(" "),_c('th',[_vm._v("Action")]),_vm._v(" "),_c('th',[_vm._v("Avatar")])])])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticStyle:{"visibility":"hidden"}},[_c('script',{attrs:{"id":"linkedinBtn","type":"in/Login"}})])}]
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
@@ -31639,7 +31646,7 @@ var Github = function () {
         if (!err && res.statusCode === 200) {
           fn(undefined, JSON.parse(body));
         } else {
-          console.log(res);
+          fn(res, undefined);
         }
       });
     }
@@ -31650,7 +31657,7 @@ var Github = function () {
         if (!err && res.statusCode === 200) {
           fn(undefined, JSON.parse(body));
         } else {
-          console.log(res);
+          fn(res, undefined);
         }
       });
     }
@@ -31658,24 +31665,28 @@ var Github = function () {
     key: 'getAllUserDatas',
     value: function getAllUserDatas(username, fn) {
       Github.getUserInformations(username, function (err, user) {
-        (0, _ajaxRequest2.default)(user.repos_url, function (err, res, body) {
-          if (!err && res.statusCode === 200) {
-            fn(undefined, {
-              image: user.avatar_url,
-              username: user.login,
-              url: user.url,
-              bio: user.bio,
-              name: user.name,
-              company: user.company,
-              blog: user.blog,
-              location: user.location,
-              email: user.email,
-              repos: JSON.parse(body)
-            });
-          } else {
-            fn(res, undefined);
-          }
-        });
+        if (!err && user) {
+          (0, _ajaxRequest2.default)(user.repos_url, function (err, res, body) {
+            if (!err && res.statusCode === 200) {
+              fn(undefined, {
+                image: user.avatar_url,
+                username: user.login,
+                url: user.url,
+                bio: user.bio,
+                name: user.name,
+                company: user.company,
+                blog: user.blog,
+                location: user.location,
+                email: user.email,
+                repos: JSON.parse(body)
+              });
+            } else {
+              fn(res, undefined);
+            }
+          });
+        } else {
+          fn(err, undefined);
+        }
       });
     }
   }]);

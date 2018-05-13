@@ -9,7 +9,7 @@ export default class Github {
       if (!err && res.statusCode === 200) {
         fn(undefined, JSON.parse(body))
       } else {
-        console.log(res)
+        fn(res, undefined)
       }
     })
   }
@@ -19,31 +19,35 @@ export default class Github {
       if (!err && res.statusCode === 200) {
         fn(undefined, JSON.parse(body))
       } else {
-        console.log(res)
+        fn(res, undefined)
       }
     })
   }
 
   static getAllUserDatas(username, fn) {
     Github.getUserInformations(username, (err, user) => {
-      Ajax(user.repos_url, (err, res, body) => {
-        if (!err && res.statusCode === 200) {
-          fn(undefined, {
-            image: user.avatar_url,
-            username: user.login,
-            url: user.url,
-            bio: user.bio,
-            name: user.name,
-            company: user.company,
-            blog: user.blog,
-            location: user.location,
-            email: user.email,
-            repos: JSON.parse(body)
-          })
-        } else {
-          fn(res, undefined)
-        }
-      })
+      if (!err && user) {
+        Ajax(user.repos_url, (err, res, body) => {
+          if (!err && res.statusCode === 200) {
+            fn(undefined, {
+              image: user.avatar_url,
+              username: user.login,
+              url: user.url,
+              bio: user.bio,
+              name: user.name,
+              company: user.company,
+              blog: user.blog,
+              location: user.location,
+              email: user.email,
+              repos: JSON.parse(body)
+            })
+          } else {
+            fn(res, undefined)
+          }
+        })
+      } else {
+        fn(err, undefined)
+      }
     })
   }
 

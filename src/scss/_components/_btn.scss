@@ -1,0 +1,28 @@
+.btn {
+  border: 0;
+  text-transform: uppercase;
+  background: rgba(0, 0, 0, 0);
+  color: #6200EE;
+  font-size: 14px;
+  padding: 8px 14px;
+  font-weight: 500;
+  margin: 4px;
+  cursor: pointer;
+  @include transition-duration(.4s);
+  @include border-radius(4px);
+  outline: none;
+  
+
+  &:hover {
+    @include opacity(.8);
+  }
+
+  &:active {
+    background: rgba(0, 0, 0, .15);
+  }
+
+  &.btn-primary {
+    color: white;
+    background: #6200EE;
+  }
+}

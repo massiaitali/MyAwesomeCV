@@ -428,12 +428,18 @@ html, body {
   background: #c8c8c8;
   font-family: Verdana, Geneva, sans-serif; }
 
-.inline-form {
-  display: inline-block;
-  text-align: left; }
+h1, h2, h3, h4, h5, h6 {
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: 500; }
+
+.full-width {
+  width: 100%; }
 
 .padding {
   padding: 1rem; }
+
+.float-right {
+  float: right; }
 
 .mdc-card__primary {
   padding: 1rem; }
@@ -444,13 +450,72 @@ html, body {
 /**
  *  Components import
 **/
+table.table {
+  border-spacing: 0;
+  border-collapse: collapse; }
+  table.table.table-centered {
+    text-align: center;
+    vertical-align: middle; }
+  table.table tr > th, table.table tr td {
+    padding: 10px 8px; }
+  table.table tr > th {
+    background: rgba(0, 0, 0, 0.1);
+    font-size: 16px; }
+  table.table tr > td {
+    font-size: 14px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1); }
+
+.btn {
+  border: 0;
+  text-transform: uppercase;
+  background: rgba(0, 0, 0, 0);
+  color: #6200EE;
+  font-size: 14px;
+  padding: 8px 14px;
+  font-weight: 500;
+  margin: 4px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  outline: none; }
+  .btn:hover {
+    opacity: 0.8;
+    filter: Alpha(80); }
+  .btn:active {
+    background: rgba(0, 0, 0, 0.15); }
+  .btn.btn-primary {
+    color: white;
+    background: #6200EE; }
+
+.card {
+  background: white;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  -moz-box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12); }
+  .card .card-primary {
+    padding: 1em; }
+  .card .card-secondary {
+    padding: 0 1em 1em; }
+  .card .card-actions {
+    overflow: hidden; }
+
 /**
  *  Pages import
 **/
-#home > .mdc-card {
+#home > .mdc-card,
+#home > .card {
   max-width: 500px;
   margin: 1em auto; }
-  #home > .mdc-card select {
+  #home > .mdc-card select,
+  #home > .card select {
     display: block;
     width: 100%; }
 

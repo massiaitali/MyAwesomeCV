@@ -1,0 +1,27 @@
+table.table {
+  border-spacing: 0;
+  border-collapse: collapse;
+
+  &.table-centered {
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  & tr {
+
+    & > th, & td {
+      padding: 10px 8px;
+    }
+
+    & > th {
+      background: rgba(0, 0, 0, .1);
+      font-size: 16px;
+    }
+
+    & > td {
+      font-size: 14px;
+      border-top: 1px solid rgba(0, 0, 0, .1);
+    }
+  }
+
+}
