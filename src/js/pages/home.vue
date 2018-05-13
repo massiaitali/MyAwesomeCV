@@ -125,11 +125,12 @@ export default {
     },
 
     nextStep() {
+      console.log(this.linkedin);
       let user = {
           firstName: this.linkedin.firstName,
           lastName: this.linkedin.lastName,
           name: this.github.name,
-          picture: this.avatar === 'github' ? this.github.image : undefined,
+          picture: this.avatar === 'github' ? this.github.image : this.linkedin.pictureUrl,
           experiences: this.linkedin.positions.values,
           projects: this.github.repos
         };
