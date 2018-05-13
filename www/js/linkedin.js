@@ -24,7 +24,7 @@ window.Linkedin = {
       .Profile("me")
       .fields([ 'first-name', 'last-name', 
                 'industry', 'date-of-birth', 'educations',
-                'positions', 'picture-url' 
+                'positions', 'picture-url', 'email-address' 
       ])
       .result(Linkedin.ShowProfileData);
   },

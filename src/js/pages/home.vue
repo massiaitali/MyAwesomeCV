@@ -173,7 +173,8 @@ export default {
             name: this.github.name,
             picture: this.avatar === 'github' ? this.github.image : this.linkedin.pictureUrl,
             experiences: this.linkedin.positions.values,
-            projects: this.github.repos
+            projects: this.github.repos,
+            mail: this.linkedin.emailAddress
           };
 
         localStorage.setItem('user', JSON.stringify(user))

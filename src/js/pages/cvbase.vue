@@ -16,7 +16,10 @@
 					    		<p>
 					      	{{ `${basicInformation.firstName} ${basicInformation.lastName}` }}
 					    		</p>
-					      	
+					      	<p>
+					      	{{ basicInformation.mail }}
+					      	</p>
+
 					      	<p>
 					      	{{ basicInformation.birthDate }}
 					      	</p>
@@ -108,6 +111,7 @@ export default {
 			this.basicInformation.firstName = user.firstName;
 			this.basicInformation.lastName =  user.lastName;
 			this.basicInformation.picture = user.picture;
+			this.basicInformation.mail = user.mail;
 			
 			let elt = this;
 
