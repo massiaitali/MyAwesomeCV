@@ -98,7 +98,7 @@
 <script>
 export default {
 	created() {
-		let user = sessionStorage.getItem('user');
+		let user = localStorage.getItem('user');
 
 		if (user) {
 			user = JSON.parse(user)

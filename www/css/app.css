@@ -432,6 +432,9 @@ h1, h2, h3, h4, h5, h6 {
   font-family: Verdana, Geneva, sans-serif;
   font-weight: 500; }
 
+.text-center {
+  text-align: center; }
+
 .full-width {
   width: 100%; }
 
@@ -471,7 +474,7 @@ table.table {
   background: rgba(0, 0, 0, 0);
   color: #6200EE;
   font-size: 14px;
-  padding: 8px 14px;
+  padding: .6em 1em;
   font-weight: 500;
   margin: 4px;
   cursor: pointer;
@@ -488,6 +491,8 @@ table.table {
     filter: Alpha(80); }
   .btn:active {
     background: rgba(0, 0, 0, 0.15); }
+  .btn.btn-large {
+    font-size: 20px; }
   .btn.btn-primary {
     color: white;
     background: #6200EE; }
