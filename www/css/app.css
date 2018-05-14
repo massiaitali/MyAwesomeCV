@@ -530,9 +530,7 @@ table.table {
 #cvbase .profile {
   display: block;
   margin-left: auto;
-  margin-right: auto;
-  width: 12%;
-  height: 40%; }
+  margin-right: auto; }
 
 #cvbase .top {
   text-align: center; }
@@ -551,11 +549,3 @@ table.table {
 
 #cvbase h1 {
   font-weight: 200; }
-
-#cvbase img {
-  height: 2em;
-  width: 2em; }
-
-#cvbase .titleIcon {
-  vertical-align: middle;
-  margin-right: 0.5em; }
