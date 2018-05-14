@@ -10,7 +10,7 @@
 		  			<div class="mdc-layout-grid__inner">
 
 			      	<div class="mdc-layout-grid__cell--span-12">
-				  			<img v-bind:src="basicInformation.picture" v-if="basicInformation.picture" class="profile">
+				  			<img v-bind:src="basicInformation.picture" v-if="basicInformation.picture" height="150">
 				      					    
 					        <h2 >{{ basicInformation.title }}</h2>
 					    		<p>
@@ -43,7 +43,7 @@
 			  <div class="mdc-layout-grid__cell--span-4">
 			  	<div class="mdc-card">
 			      <div class="mdc-card__primary">
-			        <h2 class="demo-card__title mdc-typography--headline6"> <img class="titleIcon" src="img/competence.png">Competence</h2>
+			        <h2 class="demo-card__title mdc-typography--headline6"> Competence</h2>
 			      </div>
 			      <div class="mdc-card__secondary">
 			        <ul id="example-1" class="mdc-list">
@@ -58,7 +58,7 @@
 			  <div class="mdc-layout-grid__cell--span-8">
 			  	<div class="mdc-card">
 			      <div class="mdc-card__primary">
-			        <h2 class="demo-card__title mdc-typography--headline6"> <img class="titleIcon" src="img/clipboard-verification-symbol.png"> Experience</h2>
+			        <h2 class="demo-card__title mdc-typography--headline6"> Experience</h2>
 			      </div>
 			      <div class="mdc-card__secondary" v-for="experience in experiences">
 			      	<h1> {{ experience.title }} <span class="infoExp"> {{ experience.start}} </span> </h1>
@@ -71,7 +71,7 @@
 			  <div class="mdc-layout-grid__cell--span-12">
 					<div class="mdc-card">
 			      <div class="mdc-card__primary">
-			        <h2 class="demo-card__title mdc-typography--headline6"><img class="titleIcon" src="img/formation.png">Formation</h2>
+			        <h2 class="demo-card__title mdc-typography--headline6">Formation</h2>
 			      </div>
 			      <div class="mdc-card__secondary" v-for="s in formation">
 			        <h1>{{ s.school }}</h1> 
@@ -84,12 +84,11 @@
 			  <div class="mdc-layout-grid__cell--span-12">
 					<div class="mdc-card">
 			      <div class="mdc-card__primary">
-			        <h2 class="demo-card__title mdc-typography--headline6"> <img class="titleIcon" src="img/project.png">Project </h2>
+			        <h2 class="demo-card__title mdc-typography--headline6"> Project </h2>
 			      </div>
 			      <div class="mdc-card__secondary" v-for="p in projects">
-			        <h1> {{p.title}} </h1>
-			        <a v-bind:href="p.url" target="_blank"> <img src="https://image.flaticon.com/icons/svg/25/25231.svg"> </a>
-			        <p>{{ p.description }}</p>
+			        <a v-bind:href="p.url" target="_blank"> <h1> {{p.title}} </h1> </a>
+		       	 	<p>{{ p.description }}</p>
 			        <span class="infoExp"> {{ p.techno }}</span>
 			      </div>
       		</div>

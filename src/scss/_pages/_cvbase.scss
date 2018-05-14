@@ -7,8 +7,6 @@
 		display: block;
 	    margin-left: auto;
 	    margin-right: auto;
-	    width: 12%;
-	    height: 40%;	
 	}
 	& .top {
 		text-align: center;
@@ -30,15 +28,5 @@
 
 	& h1 {
 		font-weight: 200;
-	}
-
-	& img {
-		height: 30px;
-		width:  30px;
-	}
-
-	& .titleIcon {
-		vertical-align: middle;
-		margin-right: 0.5em;
 	}
 }
