@@ -31531,6 +31531,7 @@ exports.default = {
   data: function data() {
     return {
       avatar: 'github',
+      mail: 'linkedin',
       linkedin: undefined,
       github: undefined
     };
@@ -31585,8 +31586,46 @@ exports.default = {
       this.resetGithub();
       this.logOutLinkedin();
     },
+    checkData: function checkData() {
+      var errorDetails = '';
+      if (!this.github || !this.linkedin) {
+        if (!this.github) {
+          errorDetails += ' github ';
+        }
+        if (!this.linkedin) {
+          errorDetails += ' linkedin ';
+        }
+        errorDetails = 'Impossible de r\xE9cup\xE9rer les donn\xE9es de : ' + errorDetails;
+        return errorDetails;
+      } else if (!this.avatar || !this.mail) {
+        if (!this.avatar) {
+          errorDetails += ' avatar ';
+        }
+        if (!this.mail) {
+          errorDetails += ' mail ';
+        }
+        errorDetails = 'Choisir la source de donn\xE9es pour : ' + errorDetails;
+        return errorDetails;
+      } else if (this.github.email === null || this.linkedin.emailAddress === null) {
+
+        if (this.mail === 'github' && this.github.email === null) {
+          errorDetails += ' github ';
+          errorDetails = 'La source de donn\xE9es : ' + errorDetails + ' ne renvoie pas de mail merci de choisir une source diff\xE9rente';
+          return errorDetails;
+        }
+        if (this.mail === 'linkedin' && this.linkedin.email === null) {
+          errorDetails += ' linkedin ';
+          errorDetails = 'La source de donn\xE9es : ' + errorDetails + ' ne renvoie pas de mail merci de choisir une source diff\xE9rente';
+          return errorDetails;
+        }
+        return true;
+      } else {
+        return true;
+      }
+    },
     nextStep: function nextStep() {
-      if (this.github && this.linkedin && this.avatar) {
+      var checkDataResult = this.checkData();
+      if (checkDataResult === true) {
         var user = {
           firstName: this.linkedin.firstName,
           lastName: this.linkedin.lastName,
@@ -31594,15 +31633,12 @@ exports.default = {
           picture: this.avatar === 'github' ? this.github.image : this.linkedin.pictureUrl,
           experiences: this.linkedin.positions.values,
           projects: this.github.repos,
-          mail: this.linkedin.emailAddress
+          mail: this.mail === 'github' ? this.github.email : this.linkedin.emailAddress
         };
-
         localStorage.setItem('user', JSON.stringify(user));
         this.$router.push({ name: 'cvbase' });
-      } else if (this.github && this.linkedin) {
-        alert('Il manque le paramétrage de la fusion des données');
       } else {
-        alert('Impossible de récupérer toutes les données');
+        alert(checkDataResult);
       }
     }
   }
@@ -31612,8 +31648,8 @@ exports.default = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"home"}},[_c('h1',{staticClass:"padding"},[_vm._v("Préparation du CV")]),_vm._v(" "),_c('div',{staticClass:"card"},[_c('div',{staticClass:"card-primary"},[_c('h1',[_vm._v("Mes informations")]),_vm._v(" "),_c('div',{staticClass:"padding"},[_vm._v("\n        Connectez-vous sur vos différents comptes afin de récupérer toutes vos données utiles à la génération de votre CV\n      ")]),_vm._v(" "),_c('table',{staticClass:"table full-width table-centered"},[_vm._m(0),_vm._v(" "),_c('tbody',[_c('tr',[_c('td',[_vm._v("\n              LinkedIn\n            ")]),_vm._v(" "),_c('td',[(!_vm.linkedin)?_c('button',{staticClass:"btn btn-primary",on:{"click":_vm.logInLinkedin}},[_vm._v("Connexion")]):_c('button',{staticClass:"btn",on:{"click":_vm.logOutLinkedin}},[_vm._v("Déconnexion")])])]),_vm._v(" "),_c('tr',[_c('td',[_vm._v("Github")]),_vm._v(" "),_c('td',[(!_vm.github)?_c('button',{staticClass:"btn btn-primary",on:{"click":_vm.setGithubUsername}},[_vm._v("Connexion")]):_c('button',{staticClass:"btn",on:{"click":_vm.resetGithub}},[_vm._v("Déconnexion")])])])])])]),_vm._v(" "),_c('div',{staticClass:"card-actions"},[(_vm.linkedin || _vm.github)?_c('button',{staticClass:"btn float-right",on:{"click":_vm.logout}},[_vm._v("Déconnexion")]):_vm._e()])]),_vm._v(" "),_c('div',{staticClass:"card"},[_vm._m(1),_vm._v(" "),_c('div',{staticClass:"card-secondary"},[_vm._m(2),_vm._v(" "),_c('label',[_vm._v("Choix de fusion des données")]),_vm._v(" "),_c('table',{staticClass:"table full-width table-centered"},[_vm._m(3),_vm._v(" "),_c('tbody',[_c('tr',[_c('td',[_vm._v("\n              LinkedIn\n            ")]),_vm._v(" "),_c('td',[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.avatar),expression:"avatar"}],attrs:{"type":"radio","name":"avatar","value":"linkedin"},domProps:{"checked":_vm._q(_vm.avatar,"linkedin")},on:{"change":function($event){_vm.avatar="linkedin"}}})])]),_vm._v(" "),_c('tr',[_c('td',[_vm._v("Github")]),_vm._v(" "),_c('td',[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.avatar),expression:"avatar"}],attrs:{"type":"radio","name":"avatar","value":"github"},domProps:{"checked":_vm._q(_vm.avatar,"github")},on:{"change":function($event){_vm.avatar="github"}}})])])])])])]),_vm._v(" "),_c('div',{staticClass:"padding text-center"},[_c('button',{staticClass:"btn btn-large btn-primary",on:{"click":_vm.nextStep}},[_vm._v("Générer mon CV")])]),_vm._v(" "),_vm._m(4)])}
-__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('thead',[_c('tr',[_c('th',[_vm._v("Réseau")]),_vm._v(" "),_c('th',[_vm._v("Action")])])])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"card-primary"},[_c('h1',[_vm._v("Choix des informations")])])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticStyle:{"margin-bottom":"10px"}},[_c('label',{attrs:{"for":"select"}},[_vm._v("Choix de la langue")]),_vm._v(" "),_c('select',{attrs:{"id":"select"}},[_c('option',{attrs:{"value":"fr","selected":""}},[_vm._v("Français")]),_vm._v(" "),_c('option',{attrs:{"value":"en"}},[_vm._v("English")])])])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('thead',[_c('tr',[_c('th',[_vm._v("Réseau")]),_vm._v(" "),_c('th',[_vm._v("Avatar")])])])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticStyle:{"visibility":"hidden"}},[_c('script',{attrs:{"id":"linkedinBtn","type":"in/Login"}})])}]
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"home"}},[_c('h1',{staticClass:"padding"},[_vm._v("Préparation du CV")]),_vm._v(" "),_c('div',{staticClass:"card"},[_c('div',{staticClass:"card-primary"},[_c('h1',[_vm._v("Mes informations")]),_vm._v(" "),_c('div',{staticClass:"padding"},[_vm._v("\n        Connectez-vous sur vos différents comptes afin de récupérer toutes vos données utiles à la génération de votre CV\n      ")]),_vm._v(" "),_c('table',{staticClass:"table full-width table-centered"},[_vm._m(0),_vm._v(" "),_c('tbody',[_c('tr',[_c('td',[_vm._v("\n              LinkedIn\n            ")]),_vm._v(" "),_c('td',[(!_vm.linkedin)?_c('button',{staticClass:"btn btn-primary",on:{"click":_vm.logInLinkedin}},[_vm._v("Connexion")]):_c('button',{staticClass:"btn",on:{"click":_vm.logOutLinkedin}},[_vm._v("Déconnexion")])])]),_vm._v(" "),_c('tr',[_c('td',[_vm._v("Github")]),_vm._v(" "),_c('td',[(!_vm.github)?_c('button',{staticClass:"btn btn-primary",on:{"click":_vm.setGithubUsername}},[_vm._v("Connexion")]):_c('button',{staticClass:"btn",on:{"click":_vm.resetGithub}},[_vm._v("Déconnexion")])])])])])]),_vm._v(" "),_c('div',{staticClass:"card-actions"},[(_vm.linkedin || _vm.github)?_c('button',{staticClass:"btn float-right",on:{"click":_vm.logout}},[_vm._v("Déconnexion")]):_vm._e()])]),_vm._v(" "),_c('div',{staticClass:"card"},[_vm._m(1),_vm._v(" "),_c('div',{staticClass:"card-secondary"},[_vm._m(2),_vm._v(" "),_c('label',[_vm._v("Choix de fusion des données")]),_vm._v(" "),_c('table',{staticClass:"table full-width table-centered"},[_vm._m(3),_vm._v(" "),_c('tbody',[_c('tr',[_c('td',[_vm._v("\n              LinkedIn\n            ")]),_vm._v(" "),_c('td',[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.avatar),expression:"avatar"}],attrs:{"type":"radio","name":"avatar","value":"linkedin"},domProps:{"checked":_vm._q(_vm.avatar,"linkedin")},on:{"change":function($event){_vm.avatar="linkedin"}}})]),_vm._v(" "),_c('td',[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.mail),expression:"mail"}],attrs:{"type":"radio","name":"mail","value":"linkedin"},domProps:{"checked":_vm._q(_vm.mail,"linkedin")},on:{"change":function($event){_vm.mail="linkedin"}}})])]),_vm._v(" "),_c('tr',[_c('td',[_vm._v("Github")]),_vm._v(" "),_c('td',[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.avatar),expression:"avatar"}],attrs:{"type":"radio","name":"avatar","value":"github"},domProps:{"checked":_vm._q(_vm.avatar,"github")},on:{"change":function($event){_vm.avatar="github"}}})]),_vm._v(" "),_c('td',[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.mail),expression:"mail"}],attrs:{"type":"radio","name":"mail","value":"github"},domProps:{"checked":_vm._q(_vm.mail,"github")},on:{"change":function($event){_vm.mail="github"}}})])])])])])]),_vm._v(" "),_c('div',{staticClass:"padding text-center"},[_c('button',{staticClass:"btn btn-large btn-primary",on:{"click":_vm.nextStep}},[_vm._v("Générer mon CV")])]),_vm._v(" "),_vm._m(4)])}
+__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('thead',[_c('tr',[_c('th',[_vm._v("Réseau")]),_vm._v(" "),_c('th',[_vm._v("Action")])])])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"card-primary"},[_c('h1',[_vm._v("Choix des informations")])])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticStyle:{"margin-bottom":"10px"}},[_c('label',{attrs:{"for":"select"}},[_vm._v("Choix de la langue")]),_vm._v(" "),_c('select',{attrs:{"id":"select"}},[_c('option',{attrs:{"value":"fr","selected":""}},[_vm._v("Français")]),_vm._v(" "),_c('option',{attrs:{"value":"en"}},[_vm._v("English")])])])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('thead',[_c('tr',[_c('th',[_vm._v("Réseau")]),_vm._v(" "),_c('th',[_vm._v("Avatar")]),_vm._v(" "),_c('th',[_vm._v("Mail")])])])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticStyle:{"visibility":"hidden"}},[_c('script',{attrs:{"id":"linkedinBtn","type":"in/Login"}})])}]
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
