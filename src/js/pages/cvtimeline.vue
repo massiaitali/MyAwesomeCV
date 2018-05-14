@@ -1,101 +1,157 @@
+<style scoped>
+	
+	* {  box-sizing: border-box;	}
+
+/* Set a background color */
+	body {
+	  background-color: #474e5d;
+	  font-family: Helvetica, sans-serif;
+	}
+
+/* The actual timeline (the vertical ruler) */
+	.timeline {
+	  position: relative;
+	  max-width: 1200px;
+	  margin: 0 auto;
+	}
+
+/* The actual timeline (the vertical ruler) */
+	.timeline::after {
+	  content: '';
+	  position: absolute;
+	  width: 6px;
+	  background-color: white;
+	  top: 0;
+	  bottom: 0;
+	  left: 50%;
+	  margin-left: -3px;
+	}
+
+/* Container around content */
+	.container {
+	  padding: 10px 40px;
+	  position: relative;
+	  background-color: inherit;
+	  width: 50%;
+	}
+
+/* The circles on the timeline */
+	.container::after {
+	  content: '';
+	  position: absolute;
+	  width: 25px;
+	  height: 25px;
+	  right: -17px;
+	  background-color: white;
+	  border: 4px solid #FF9F55;
+	  top: 15px;
+	  border-radius: 50%;
+	  z-index: 1;
+	}
+
+/* Place the container to the left */
+	.left {
+	  left: 0;
+	}
+
+/* Place the container to the right */
+	.right {
+	  left: 50%;
+	}
+
+/* Add arrows to the left container (pointing right) */
+	.left::before {
+	  content: " ";
+	  height: 0;
+	  position: absolute;
+	  top: 22px;
+	  width: 0;
+	  z-index: 1;
+	  right: 30px;
+	  border: medium solid white;
+	  border-width: 10px 0 10px 10px;
+	  border-color: transparent transparent transparent white;
+	}
+
+/* Add arrows to the right container (pointing left) */
+	.right::before {
+	  content: " ";
+	  height: 0;
+	  position: absolute;
+	  top: 22px;
+	  width: 0;
+	  z-index: 1;
+	  left: 30px;
+	  border: medium solid white;
+	  border-width: 10px 10px 10px 0;
+	  border-color: transparent white transparent transparent;
+	}
+
+/* Fix the circle for containers on the right side */
+	.right::after {
+	  left: -16px;
+	}
+
+/* The actual content */
+	.content {
+	  padding: 20px 30px;
+	  background-color: white;
+	  position: relative;
+	  border-radius: 6px;
+	}
+
+/* Media queries - Responsive timeline on screens less than 600px wide */
+	@media screen and (max-width: 600px) {
+	/* Place the timelime to the left */
+	  .timeline::after {
+	    left: 31px;
+	  }
+
+	/* Full-width containers */
+	  .container {
+	    width: 100%;
+	    padding-left: 70px;
+	    padding-right: 25px;
+	  }
+
+	/* Make sure that all arrows are pointing leftwards */
+	  .container::before {
+	    left: 60px;
+	    border: medium solid white;
+	    border-width: 10px 10px 10px 0;
+	    border-color: transparent white transparent transparent;
+	  }
+
+	/* Make sure all circles are at the same spot */
+	  .left::after, .right::after {
+	    left: 15px;
+	  }
+
+	/* Make all right containers behave like the left ones */
+	  .right {
+	    left: 0%;
+	  }
+	}
+</style>
+
 <template>
-  <div id="cvbase">
-		CV Base
-
-		<div class="mdc-layout-grid">
-		  <div class="mdc-layout-grid__inner">
-			  
-		    <div class="mdc-layout-grid__cell--span-12 top">
-     			<div class="mdc-layout-grid">
-		  			<div class="mdc-layout-grid__inner">
-
-			      	<div class="mdc-layout-grid__cell--span-12">
-				  			<img v-bind:src="basicInformation.picture" v-if="basicInformation.picture" class="profile">
-				      					    
-					        <h2 >{{ basicInformation.title }}</h2>
-					    		<p>
-					      	{{ `${basicInformation.firstName} ${basicInformation.lastName}` }}
-					    		</p>
-					      	<p>
-					      	{{ basicInformation.mail }}
-					      	</p>
-
-					      	<p>
-					      	{{ basicInformation.birthDate }}
-					      	</p>
-
-					      	<p>
-					      	{{ `${experiences[0].company} ${formation[0].school}` }}
-					    		</p>
-					    		<p>
-					      	{{ `${basicInformation.location} ${basicInformation.postCode} ${basicInformation.country}` }}
-			    				</p>
-			    		</div>
-
-			    		<div class="mdc-layout-grid__cell--span-12 secRow">
-			    			{{ basicInformation.simpleDescription }}
-			    		</div>
-
-		    		</div>
-    			</div>
-    	</div>
-		  
-			  <div class="mdc-layout-grid__cell--span-4">
-			  	<div class="mdc-card">
-			      <div class="mdc-card__primary">
-			        <h2 class="demo-card__title mdc-typography--headline6"> <img class="titleIcon" src="img/competence.png">Competence</h2>
-			      </div>
-			      <div class="mdc-card__secondary">
-			        <ul id="example-1" class="mdc-list">
-							  <li  class="mdc-list-item" v-for="s in skills">
-							    {{ s }}
-							  </li>
-							</ul>
-			      </div>
-      		</div>
-			  </div>
-			  
-			  <div class="mdc-layout-grid__cell--span-8">
-			  	<div class="mdc-card">
-			      <div class="mdc-card__primary">
-			        <h2 class="demo-card__title mdc-typography--headline6"> <img class="titleIcon" src="img/clipboard-verification-symbol.png"> Experience</h2>
-			      </div>
-			      <div class="mdc-card__secondary" v-for="experience in experiences">
-			      	<h1> {{ experience.title }} <span class="infoExp"> {{ experience.start}} </span> </h1>
-			      	<p class="infoExp"> {{ `${experience.company}, ${experience.location}` }} </p>
-			      	<p> {{ experience.content }}</p>
-			      </div>
-      		</div>
-			  </div>
-			  
-			  <div class="mdc-layout-grid__cell--span-12">
-					<div class="mdc-card">
-			      <div class="mdc-card__primary">
-			        <h2 class="demo-card__title mdc-typography--headline6"><img class="titleIcon" src="img/formation.png">Formation</h2>
-			      </div>
-			      <div class="mdc-card__secondary" v-for="s in formation">
-			        <h1>{{ s.school }}</h1> 
-			        <span class="infoExp">{{ s.diploma }}</span>
-			        <p> {{ s.content }} </p> 
-			      </div>
-      		</div>
-			  </div>
-
-			  <div class="mdc-layout-grid__cell--span-12">
-					<div class="mdc-card">
-			      <div class="mdc-card__primary">
-			        <h2 class="demo-card__title mdc-typography--headline6"> <img class="titleIcon" src="img/project.png">Project </h2>
-			      </div>
-			      <div class="mdc-card__secondary" v-for="p in projects">
-			        <h1> {{p.title}} </h1>
-			        <a v-bind:href="p.url" target="_blank"> <img src="https://image.flaticon.com/icons/svg/25/25231.svg"> </a>
-			        <p>{{ p.description }}</p>
-			        <span class="infoExp"> {{ p.techno }}</span>
-			      </div>
-      		</div>
-			  </div>
-			</div>
-		</div>
+  <div id="cvtimeline">
+		CV Timeline
+		<div class="timeline">
+  		<div class="container left">
+    		<div class="content">
+      		<h2>{{merged[0].start }}</h2>
+      		<p>Lorem ipsum..</p>
+    		</div>
+  		</div>
+  		
+  		<div class="container right">
+    		<div class="content">
+      		<h2>2016</h2>
+      		<p>Lorem ipsum..</p>
+    		</div>
+  		</div>
+		</div> 		
 	</div>
 </template>
 
@@ -128,6 +184,9 @@ export default {
 				elt.projects.push(res);
 			});
 
+			this.merged = this.experiences.concat(this.formation);
+			this.merged.sort(function(a,b) {return (a.start > b.start) ? -1 : ((b.start > a.start) ? 1 : 0);} ); 
+
 		} else {
 			console.log('No user found')
 		}
@@ -154,7 +213,7 @@ export default {
 				{ title: 'Developpeur Full de la Stack qui stack le stackement de la stack', content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultricies commodo aliquam. Vestibulum sed dui eros. Integer et pretium nunc. Cras ornare odio id fermentum viverra. Suspendisse id tortor quis lectus laoreet aliquet quis nec justo. Duis iaculis dui rutrum pulvinar consequat. Sed bibendum mattis nisi vitae aliquam. Nulla tristique erat et quam hendrerit, et vestibulum nisl sodales. Etiam ac dictum elit, non dapibus nisi. Curabitur tortor lectus, elementum at sodales a, fermentum imperdiet velit. Aliquam in pharetra elit. Donec sodales, metus id ultricies scelerisque, nunc dui pulvinar lectus, ut pharetra diam nisi eu turpis. Vestibulum placerat pellentesque mauris id facilisis. Vivamus porta et nunc ac hendrerit. Sed a ex at dolor molestie placerat. Sed fermentum nisi at enim varius, a commodo risus tempor.', company: 'Orange', location: 'France'},
 				{ title: 'Developpeur Full de la Stack qui stack le stackement de la stack', content: 'Sed id diam eget dolor euismod fermentum id eget orci. Etiam ultrices, tortor convallis sollicitudin faucibus, libero dolor tempus odio, sit amet sodales lorem libero id velit. Sed at rhoncus massa. Ut a porta sem, ut dignissim tellus. Suspendisse id venenatis lectus. Ut ornare condimentum interdum. Etiam vitae justo volutpat, consequat purus aliquet, consequat risus. Integer non facilisis urna. Cras non laoreet orci. Sed faucibus malesuada nibh vitae dictum. Aliquam pretium tincidunt imperdiet. Nunc finibus imperdiet eros. Pellentesque varius lorem ut ante pellentesque tempor. ', company: 'Orange', location: 'France'}
 			],
-			projects     : [
+			projects    : [
 				{ title: 'KEEPER', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultricies commodo aliquam. Vestibulum sed dui eros. Integer et pretium nunc. Cras ornare odio id fermentum viverra. Suspendisse id tortor quis lectus laoreet aliquet quis nec justo. Duis iaculis dui rutrum pulvinar consequat. Sed bibendum mattis nisi vitae aliquam. Nulla tristique erat et quam hendrerit, et vestibulum nisl sodales. ', techno: 'NodeJS et vueJS' },
 				{ title: 'SUPER PROJET', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultricies commodo aliquam. Vestibulum sed dui eros. Integer et pretium nunc. Cras ornare odio id fermentum viverra. Suspendisse id tortor quis lectus laoreet aliquet quis nec justo. Duis iaculis dui rutrum pulvinar consequat. Sed bibendum mattis nisi vitae aliquam. Nulla tristique erat et quam hendrerit, et vestibulum nisl sodales. ', techno: 'NodeJS et vueJS' },
 				{ title: 'SUPER PROJET', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultricies commodo aliquam. Vestibulum sed dui eros. Integer et pretium nunc. Cras ornare odio id fermentum viverra. Suspendisse id tortor quis lectus laoreet aliquet quis nec justo. Duis iaculis dui rutrum pulvinar consequat. Sed bibendum mattis nisi vitae aliquam. Nulla tristique erat et quam hendrerit, et vestibulum nisl sodales. ', techno: 'NodeJS et vueJS' },
@@ -165,13 +224,14 @@ export default {
 				{ title: 'SUPER PROJET', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultricies commodo aliquam. Vestibulum sed dui eros. Integer et pretium nunc. Cras ornare odio id fermentum viverra. Suspendisse id tortor quis lectus laoreet aliquet quis nec justo. Duis iaculis dui rutrum pulvinar consequat. Sed bibendum mattis nisi vitae aliquam. Nulla tristique erat et quam hendrerit, et vestibulum nisl sodales. ', techno: 'NodeJS et vueJS' },
 				{ title: 'SUPER PROJET', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultricies commodo aliquam. Vestibulum sed dui eros. Integer et pretium nunc. Cras ornare odio id fermentum viverra. Suspendisse id tortor quis lectus laoreet aliquet quis nec justo. Duis iaculis dui rutrum pulvinar consequat. Sed bibendum mattis nisi vitae aliquam. Nulla tristique erat et quam hendrerit, et vestibulum nisl sodales. ', techno: 'NodeJS et vueJS' }
 			],
-			formation    : [
-				{ school: 'Polytech Paris Sud', diploma: 'Diplome de lingéneieur', content: 'Sed id diam eget dolor euismod fermentum id eget orci. Etiam ultrices, tortor convallis sollicitudin faucibus, libero dolor tempus odio, sit amet sodales lorem libero id velit. Sed at rhoncus massa. Ut a porta sem, ut dignissim tellus. Suspendisse id venenatis lectus. Ut ornare condimentum interdum. Etiam vitae justo volutpat, consequat purus aliquet, consequat risus. Integer non facilisis urna. Cras non laoreet orci. Sed faucibus malesuada nibh vitae dictum. Aliquam pretium tincidunt imperdiet. Nunc finibus imperdiet eros. Pellentesque varius lorem ut ante pellentesque tempor. ' },
-				{ school: 'Polytech Paris Sud', diploma: 'Diplome obtenu en etude', content: 'Sed id diam eget dolor euismod fermentum id eget orci. Etiam ultrices, tortor convallis sollicitudin faucibus, libero dolor tempus odio, sit amet sodales lorem libero id velit. Sed at rhoncus massa. Ut a porta sem, ut dignissim tellus. Suspendisse id venenatis lectus. Ut ornare condimentum interdum. Etiam vitae justo volutpat, consequat purus aliquet, consequat risus. Integer non facilisis urna. Cras non laoreet orci. Sed faucibus malesuada nibh vitae dictum. Aliquam pretium tincidunt imperdiet. Nunc finibus imperdiet eros. Pellentesque varius lorem ut ante pellentesque tempor. ' },
-				{ school: 'Polytech Paris Sud', diploma: 'Diplome obtenu en etude', content: 'Sed id diam eget dolor euismod fermentum id eget orci. Etiam ultrices, tortor convallis sollicitudin faucibus, libero dolor tempus odio, sit amet sodales lorem libero id velit. Sed at rhoncus massa. Ut a porta sem, ut dignissim tellus. Suspendisse id venenatis lectus. Ut ornare condimentum interdum. Etiam vitae justo volutpat, consequat purus aliquet, consequat risus. Integer non facilisis urna. Cras non laoreet orci. Sed faucibus malesuada nibh vitae dictum. Aliquam pretium tincidunt imperdiet. Nunc finibus imperdiet eros. Pellentesque varius lorem ut ante pellentesque tempor. ' },
-				{ school: 'Polytech Paris Sud', diploma: 'Diplome obtenu en etude', content: 'Sed id diam eget dolor euismod fermentum id eget orci. Etiam ultrices, tortor convallis sollicitudin faucibus, libero dolor tempus odio, sit amet sodales lorem libero id velit. Sed at rhoncus massa. Ut a porta sem, ut dignissim tellus. Suspendisse id venenatis lectus. Ut ornare condimentum interdum. Etiam vitae justo volutpat, consequat purus aliquet, consequat risus. Integer non facilisis urna. Cras non laoreet orci. Sed faucibus malesuada nibh vitae dictum. Aliquam pretium tincidunt imperdiet. Nunc finibus imperdiet eros. Pellentesque varius lorem ut ante pellentesque tempor. ' }
+			formation   : [
+				{ school: 'Polytech Paris Sud', diploma: 'Diplome de lingéneieur', content: 'Sed id diam eget dolor euismod fermentum id eget orci. Etiam ultrices, tortor convallis sollicitudin faucibus, libero dolor tempus odio, sit amet sodales lorem libero id velit. Sed at rhoncus massa. Ut a porta sem, ut dignissim tellus. Suspendisse id venenatis lectus. Ut ornare condimentum interdum. Etiam vitae justo volutpat, consequat purus aliquet, consequat risus. Integer non facilisis urna. Cras non laoreet orci. Sed faucibus malesuada nibh vitae dictum. Aliquam pretium tincidunt imperdiet. Nunc finibus imperdiet eros. Pellentesque varius lorem ut ante pellentesque tempor.', start : '2015' },
+				{ school: 'Polytech Paris Sud', diploma: 'Diplome obtenu en etude', content: 'Sed id diam eget dolor euismod fermentum id eget orci. Etiam ultrices, tortor convallis sollicitudin faucibus, libero dolor tempus odio, sit amet sodales lorem libero id velit. Sed at rhoncus massa. Ut a porta sem, ut dignissim tellus. Suspendisse id venenatis lectus. Ut ornare condimentum interdum. Etiam vitae justo volutpat, consequat purus aliquet, consequat risus. Integer non facilisis urna. Cras non laoreet orci. Sed faucibus malesuada nibh vitae dictum. Aliquam pretium tincidunt imperdiet. Nunc finibus imperdiet eros. Pellentesque varius lorem ut ante pellentesque tempor. ', start : '2016' },
+				{ school: 'Polytech Paris Sud', diploma: 'Diplome obtenu en etude', content: 'Sed id diam eget dolor euismod fermentum id eget orci. Etiam ultrices, tortor convallis sollicitudin faucibus, libero dolor tempus odio, sit amet sodales lorem libero id velit. Sed at rhoncus massa. Ut a porta sem, ut dignissim tellus. Suspendisse id venenatis lectus. Ut ornare condimentum interdum. Etiam vitae justo volutpat, consequat purus aliquet, consequat risus. Integer non facilisis urna. Cras non laoreet orci. Sed faucibus malesuada nibh vitae dictum. Aliquam pretium tincidunt imperdiet. Nunc finibus imperdiet eros. Pellentesque varius lorem ut ante pellentesque tempor. ' , start : '2017'},
+				{ school: 'Polytech Paris Sud', diploma: 'Diplome obtenu en etude', content: 'Sed id diam eget dolor euismod fermentum id eget orci. Etiam ultrices, tortor convallis sollicitudin faucibus, libero dolor tempus odio, sit amet sodales lorem libero id velit. Sed at rhoncus massa. Ut a porta sem, ut dignissim tellus. Suspendisse id venenatis lectus. Ut ornare condimentum interdum. Etiam vitae justo volutpat, consequat purus aliquet, consequat risus. Integer non facilisis urna. Cras non laoreet orci. Sed faucibus malesuada nibh vitae dictum. Aliquam pretium tincidunt imperdiet. Nunc finibus imperdiet eros. Pellentesque varius lorem ut ante pellentesque tempor. ', start : '2018' }
 			],
-			skills				: ['Lorem', 'Ipsum','Lorem', 'Ipsum','Lorem', 'Ipsum','Lorem', 'Ipsum','Lorem', 'Ipsum','Lorem']
+			skills		  : ['Lorem', 'Ipsum','Lorem', 'Ipsum','Lorem', 'Ipsum','Lorem', 'Ipsum','Lorem', 'Ipsum','Lorem'],
+			merged 			: []
 		}
 	},
 	methods: {
