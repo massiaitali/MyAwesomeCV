@@ -1,6 +1,6 @@
 <template>
   <div id="cvbase">
-		CV Base
+		<button class="btn btn-primary" v-on:click="exportToXML">Exporter en XML</button>
 
 		<div class="mdc-layout-grid">
 		  <div class="mdc-layout-grid__inner">
@@ -25,7 +25,7 @@
 					      	</p>
 
 					      	<p>
-					      	{{ `${experiences[0].company} ${formation[0].school}` }}
+					      	{{ `${experiences[0].company} ${formations[0].school}` }}
 					    		</p>
 					    		<p>
 					      	{{ `${basicInformation.location} ${basicInformation.postCode} ${basicInformation.country}` }}
@@ -73,7 +73,7 @@
 			      <div class="mdc-card__primary">
 			        <h2 class="demo-card__title mdc-typography--headline6">Formation</h2>
 			      </div>
-			      <div class="mdc-card__secondary" v-for="s in formation">
+			      <div class="mdc-card__secondary" v-for="s in formations">
 			        <h1>{{ s.school }}</h1> 
 			        <span class="infoExp">{{ s.diploma }}</span>
 			        <p> {{ s.content }} </p> 
@@ -99,6 +99,8 @@
 </template>
 
 <script>
+import XMLParser from '../tools/XMLParser';
+
 export default {
 	created() {
 		let user = localStorage.getItem('user');
@@ -164,7 +166,7 @@ export default {
 				{ title: 'SUPER PROJET', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultricies commodo aliquam. Vestibulum sed dui eros. Integer et pretium nunc. Cras ornare odio id fermentum viverra. Suspendisse id tortor quis lectus laoreet aliquet quis nec justo. Duis iaculis dui rutrum pulvinar consequat. Sed bibendum mattis nisi vitae aliquam. Nulla tristique erat et quam hendrerit, et vestibulum nisl sodales. ', techno: 'NodeJS et vueJS' },
 				{ title: 'SUPER PROJET', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultricies commodo aliquam. Vestibulum sed dui eros. Integer et pretium nunc. Cras ornare odio id fermentum viverra. Suspendisse id tortor quis lectus laoreet aliquet quis nec justo. Duis iaculis dui rutrum pulvinar consequat. Sed bibendum mattis nisi vitae aliquam. Nulla tristique erat et quam hendrerit, et vestibulum nisl sodales. ', techno: 'NodeJS et vueJS' }
 			],
-			formation    : [
+			formations    : [
 				{ school: 'Polytech Paris Sud', diploma: 'Diplome de lingéneieur', content: 'Sed id diam eget dolor euismod fermentum id eget orci. Etiam ultrices, tortor convallis sollicitudin faucibus, libero dolor tempus odio, sit amet sodales lorem libero id velit. Sed at rhoncus massa. Ut a porta sem, ut dignissim tellus. Suspendisse id venenatis lectus. Ut ornare condimentum interdum. Etiam vitae justo volutpat, consequat purus aliquet, consequat risus. Integer non facilisis urna. Cras non laoreet orci. Sed faucibus malesuada nibh vitae dictum. Aliquam pretium tincidunt imperdiet. Nunc finibus imperdiet eros. Pellentesque varius lorem ut ante pellentesque tempor. ' },
 				{ school: 'Polytech Paris Sud', diploma: 'Diplome obtenu en etude', content: 'Sed id diam eget dolor euismod fermentum id eget orci. Etiam ultrices, tortor convallis sollicitudin faucibus, libero dolor tempus odio, sit amet sodales lorem libero id velit. Sed at rhoncus massa. Ut a porta sem, ut dignissim tellus. Suspendisse id venenatis lectus. Ut ornare condimentum interdum. Etiam vitae justo volutpat, consequat purus aliquet, consequat risus. Integer non facilisis urna. Cras non laoreet orci. Sed faucibus malesuada nibh vitae dictum. Aliquam pretium tincidunt imperdiet. Nunc finibus imperdiet eros. Pellentesque varius lorem ut ante pellentesque tempor. ' },
 				{ school: 'Polytech Paris Sud', diploma: 'Diplome obtenu en etude', content: 'Sed id diam eget dolor euismod fermentum id eget orci. Etiam ultrices, tortor convallis sollicitudin faucibus, libero dolor tempus odio, sit amet sodales lorem libero id velit. Sed at rhoncus massa. Ut a porta sem, ut dignissim tellus. Suspendisse id venenatis lectus. Ut ornare condimentum interdum. Etiam vitae justo volutpat, consequat purus aliquet, consequat risus. Integer non facilisis urna. Cras non laoreet orci. Sed faucibus malesuada nibh vitae dictum. Aliquam pretium tincidunt imperdiet. Nunc finibus imperdiet eros. Pellentesque varius lorem ut ante pellentesque tempor. ' },
@@ -174,8 +176,14 @@ export default {
 		}
 	},
 	methods: {
-		test() {
+		exportToXML() {
+			try {
+				let xml = XMLParser.fromObj(this.$data, 'cv', 'schema.xsd');
 
+				XMLParser.generateDownloadLink('cv.xml', xml)
+			} catch (err) {
+				alert('Erreur lors de la génération du XML')
+			}
 		}
 	}
 }

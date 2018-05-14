@@ -206,7 +206,8 @@ export default {
     },
 
     nextStep() {
-      var checkDataResult =  this.checkData();
+      var checkDataResult = this.checkData();
+
       if (checkDataResult === true) {
         let user = {
             firstName: this.linkedin.firstName,
@@ -217,6 +218,7 @@ export default {
             projects: this.github.repos,
             mail: this.mail === 'github' ? this.github.email : this.linkedin.emailAddress 
           };
+
         localStorage.setItem('user', JSON.stringify(user))
         this.$router.push({ name: 'cvbase' })
       }

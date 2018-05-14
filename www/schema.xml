@@ -1,0 +1,80 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="cv">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="basicInformation">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="firstName"/>
+              <xs:element type="xs:string" name="lastName"/>
+              <xs:element type="xs:string" name="birthDate"/>
+              <xs:element type="xs:string" name="title"/>
+              <xs:element type="xs:string" name="currentOccupation"/>
+              <xs:element type="xs:string" name="formation"/>
+              <xs:element type="xs:string" name="country"/>
+              <xs:element type="xs:string" name="postCode"/>
+              <xs:element type="xs:string" name="location"/>
+              <xs:element type="xs:string" name="simpleDescription"/>
+              <xs:element type="xs:string" name="picture"/>
+              <xs:element type="xs:string" name="mail"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="experiences">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="experience" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="title"/>
+                    <xs:element type="xs:string" name="content"/>
+                    <xs:element type="xs:string" name="company"/>
+                    <xs:element type="xs:string" name="location"/>
+                    <xs:element type="xs:string" name="start"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="projects">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="project" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="title"/>
+                    <xs:element type="xs:string" name="description"/>
+                    <xs:element type="xs:string" name="url"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="formations">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="formation" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="school"/>
+                    <xs:element type="xs:string" name="diploma"/>
+                    <xs:element type="xs:string" name="content"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="skills">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="skill" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
