@@ -58,6 +58,7 @@
             <tr>
               <th>Réseau</th>
               <th>Avatar</th>
+              <th>Mail</th>
             </tr>
           </thead>
           <tbody>
@@ -68,11 +69,17 @@
               <td>
                 <input type="radio" name="avatar" v-model="avatar" value="linkedin">
               </td>
+              <td>
+                <input type="radio" name="mail" v-model="mail" value="linkedin">
+              </td>
             </tr>
             <tr>
               <td>Github</td>
               <td>
                 <input type="radio" name="avatar" v-model="avatar" value="github">
+              </td>
+              <td>
+                <input type="radio" name="mail" v-model="mail" value="github">
               </td>
             </tr>
           </tbody>
@@ -101,6 +108,7 @@ export default {
   data() {
     return {
       avatar: 'github',
+      mail: 'linkedin',
       linkedin: undefined,
       github: undefined
     }
@@ -165,8 +173,41 @@ export default {
       this.logOutLinkedin()
     },
 
+    checkData() {
+      let errorDetails = '';
+      if(!this.github || !this.linkedin){
+        if(!this.github) {errorDetails += ' github ';}
+        if(!this.linkedin) {errorDetails += ' linkedin ';}
+        errorDetails = `Impossible de récupérer les données de : ${errorDetails}`;
+        return errorDetails;
+      }
+      else if(!this.avatar || !this.mail){
+        if(!this.avatar) {errorDetails += ' avatar ';}
+        if(!this.mail) {errorDetails += ' mail ';}
+        errorDetails = `Choisir la source de données pour : ${errorDetails}`;
+        return errorDetails;
+      }
+      else if(this.github.email === null || this.linkedin.emailAddress === null) {
+
+        if(this.mail === 'github' && this.github.email === null) {
+          errorDetails += ' github ';
+          errorDetails = `La source de données : ${errorDetails} ne renvoie pas de mail merci de choisir une source différente`;
+          return errorDetails;
+        }
+        if(this.mail === 'linkedin' && this.linkedin.email === null) {
+          errorDetails += ' linkedin ';
+          errorDetails = `La source de données : ${errorDetails} ne renvoie pas de mail merci de choisir une source différente`;
+          return errorDetails;
+        }
+        return true;
+      }
+      else {return true;}
+
+    },
+
     nextStep() {
-      if (this.github && this.linkedin && this.avatar) {
+      var checkDataResult =  this.checkData();
+      if (checkDataResult === true) {
         let user = {
             firstName: this.linkedin.firstName,
             lastName: this.linkedin.lastName,
@@ -174,19 +215,13 @@ export default {
             picture: this.avatar === 'github' ? this.github.image : this.linkedin.pictureUrl,
             experiences: this.linkedin.positions.values,
             projects: this.github.repos,
-            mail: this.linkedin.emailAddress
+            mail: this.mail === 'github' ? this.github.email : this.linkedin.emailAddress 
           };
-
         localStorage.setItem('user', JSON.stringify(user))
         this.$router.push({ name: 'cvbase' })
       }
-
-      else if (this.github && this.linkedin) {
-        alert('Il manque le paramétrage de la fusion des données')
-      }
-
       else {
-        alert('Impossible de récupérer toutes les données')
+        alert(checkDataResult);
       }
     }
   }
