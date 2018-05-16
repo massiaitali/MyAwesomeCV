@@ -1,5 +1,14 @@
 export default class XMLParser {
 
+  static escapeValue(value) {
+    if (value && value.constructor.name === 'String') {
+      return value.replace('&', '&amp;')
+    } else {
+      return value
+    }
+
+  }
+
   static fromObj(obj, root, schemaPath) {
     let r = '';
 
@@ -13,7 +22,7 @@ export default class XMLParser {
           if (obj[key][i] instanceof Object) {
             r += "\n" + `<${eltKey}>` + "\n" + XMLParser.fromObj(obj[key][i]) + "\n" + `</${eltKey}>`;
           } else {
-            r += "\n" + `<${eltKey}>${obj[key][i]}</${eltKey}>`;
+            r += "\n" + `<${eltKey}>${XMLParser.escapeValue(obj[key][i])}</${eltKey}>`;
           }
         }
 
@@ -23,7 +32,7 @@ export default class XMLParser {
         r += `<${key}>` + "\n" + XMLParser.fromObj(obj[key]) + "\n</" + key + '>';
       }
       else {
-        r += `<${key}>${obj[key]}</${key}>`;
+        r += `<${key}>${XMLParser.escapeValue(obj[key])}</${key}>`;
       }
     }
 
@@ -41,8 +50,8 @@ export default class XMLParser {
   }
 
 
-  static fromJson(json, root) {
-    return XMLParser.fromObj(JSON.parse(json), root);
+  static fromJson(json, root, schemaPath) {
+    return XMLParser.fromObj(JSON.parse(json), root, schemaPath);
   }
 
 

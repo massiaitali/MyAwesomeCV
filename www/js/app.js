@@ -31471,16 +31471,9 @@ var app = new _vue2.default({
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-
-var _XMLParser = require('../tools/XMLParser');
-
-var _XMLParser2 = _interopRequireDefault(_XMLParser);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 exports.default = {
 	created: function created() {
-		var user = localStorage.getItem('user');
+		var user = sessionStorage.getItem('user');
 
 		if (user) {
 			user = JSON.parse(user);
@@ -31529,25 +31522,13 @@ exports.default = {
 			formations: [{ school: 'Polytech Paris Sud', diploma: 'Diplome de lingéneieur', content: 'Sed id diam eget dolor euismod fermentum id eget orci. Etiam ultrices, tortor convallis sollicitudin faucibus, libero dolor tempus odio, sit amet sodales lorem libero id velit. Sed at rhoncus massa. Ut a porta sem, ut dignissim tellus. Suspendisse id venenatis lectus. Ut ornare condimentum interdum. Etiam vitae justo volutpat, consequat purus aliquet, consequat risus. Integer non facilisis urna. Cras non laoreet orci. Sed faucibus malesuada nibh vitae dictum. Aliquam pretium tincidunt imperdiet. Nunc finibus imperdiet eros. Pellentesque varius lorem ut ante pellentesque tempor. ' }, { school: 'Polytech Paris Sud', diploma: 'Diplome obtenu en etude', content: 'Sed id diam eget dolor euismod fermentum id eget orci. Etiam ultrices, tortor convallis sollicitudin faucibus, libero dolor tempus odio, sit amet sodales lorem libero id velit. Sed at rhoncus massa. Ut a porta sem, ut dignissim tellus. Suspendisse id venenatis lectus. Ut ornare condimentum interdum. Etiam vitae justo volutpat, consequat purus aliquet, consequat risus. Integer non facilisis urna. Cras non laoreet orci. Sed faucibus malesuada nibh vitae dictum. Aliquam pretium tincidunt imperdiet. Nunc finibus imperdiet eros. Pellentesque varius lorem ut ante pellentesque tempor. ' }, { school: 'Polytech Paris Sud', diploma: 'Diplome obtenu en etude', content: 'Sed id diam eget dolor euismod fermentum id eget orci. Etiam ultrices, tortor convallis sollicitudin faucibus, libero dolor tempus odio, sit amet sodales lorem libero id velit. Sed at rhoncus massa. Ut a porta sem, ut dignissim tellus. Suspendisse id venenatis lectus. Ut ornare condimentum interdum. Etiam vitae justo volutpat, consequat purus aliquet, consequat risus. Integer non facilisis urna. Cras non laoreet orci. Sed faucibus malesuada nibh vitae dictum. Aliquam pretium tincidunt imperdiet. Nunc finibus imperdiet eros. Pellentesque varius lorem ut ante pellentesque tempor. ' }, { school: 'Polytech Paris Sud', diploma: 'Diplome obtenu en etude', content: 'Sed id diam eget dolor euismod fermentum id eget orci. Etiam ultrices, tortor convallis sollicitudin faucibus, libero dolor tempus odio, sit amet sodales lorem libero id velit. Sed at rhoncus massa. Ut a porta sem, ut dignissim tellus. Suspendisse id venenatis lectus. Ut ornare condimentum interdum. Etiam vitae justo volutpat, consequat purus aliquet, consequat risus. Integer non facilisis urna. Cras non laoreet orci. Sed faucibus malesuada nibh vitae dictum. Aliquam pretium tincidunt imperdiet. Nunc finibus imperdiet eros. Pellentesque varius lorem ut ante pellentesque tempor. ' }],
 			skills: ['Lorem', 'Ipsum', 'Lorem', 'Ipsum', 'Lorem', 'Ipsum', 'Lorem', 'Ipsum', 'Lorem', 'Ipsum', 'Lorem']
 		};
-	},
-
-	methods: {
-		exportToXML: function exportToXML() {
-			try {
-				var xml = _XMLParser2.default.fromObj(this.$data, 'cv', 'schema.xsd');
-
-				_XMLParser2.default.generateDownloadLink('cv.xml', xml);
-			} catch (err) {
-				alert('Erreur lors de la génération du XML');
-			}
-		}
 	}
 };
 })()
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"cvbase"}},[_c('button',{staticClass:"btn btn-primary",on:{"click":_vm.exportToXML}},[_vm._v("Exporter en XML")]),_vm._v(" "),_c('div',{staticClass:"mdc-layout-grid"},[_c('div',{staticClass:"mdc-layout-grid__inner"},[_c('div',{staticClass:"mdc-layout-grid__cell--span-12 top"},[_c('div',{staticClass:"mdc-layout-grid"},[_c('div',{staticClass:"mdc-layout-grid__inner"},[_c('div',{staticClass:"mdc-layout-grid__cell--span-12"},[(_vm.basicInformation.picture)?_c('img',{attrs:{"src":_vm.basicInformation.picture,"height":"150"}}):_vm._e(),_vm._v(" "),_c('h2',[_vm._v(_vm._s(_vm.basicInformation.title))]),_vm._v(" "),_c('p',[_vm._v("\n\t\t\t\t\t      \t"+_vm._s(((_vm.basicInformation.firstName) + " " + (_vm.basicInformation.lastName)))+"\n\t\t\t\t\t    \t\t")]),_vm._v(" "),_c('p',[_vm._v("\n\t\t\t\t\t      \t"+_vm._s(_vm.basicInformation.mail)+"\n\t\t\t\t\t      \t")]),_vm._v(" "),_c('p',[_vm._v("\n\t\t\t\t\t      \t"+_vm._s(_vm.basicInformation.birthDate)+"\n\t\t\t\t\t      \t")]),_vm._v(" "),_c('p',[_vm._v("\n\t\t\t\t\t      \t"+_vm._s(((_vm.experiences[0].company) + " " + (_vm.formations[0].school)))+"\n\t\t\t\t\t    \t\t")]),_vm._v(" "),_c('p',[_vm._v("\n\t\t\t\t\t      \t"+_vm._s(((_vm.basicInformation.location) + " " + (_vm.basicInformation.postCode) + " " + (_vm.basicInformation.country)))+"\n\t\t\t    \t\t\t\t")])]),_vm._v(" "),_c('div',{staticClass:"mdc-layout-grid__cell--span-12 secRow"},[_vm._v("\n\t\t\t    \t\t\t"+_vm._s(_vm.basicInformation.simpleDescription)+"\n\t\t\t    \t\t")])])])]),_vm._v(" "),_c('div',{staticClass:"mdc-layout-grid__cell--span-4"},[_c('div',{staticClass:"mdc-card"},[_vm._m(0),_vm._v(" "),_c('div',{staticClass:"mdc-card__secondary"},[_c('ul',{staticClass:"mdc-list",attrs:{"id":"example-1"}},_vm._l((_vm.skills),function(s){return _c('li',{staticClass:"mdc-list-item"},[_vm._v("\n\t\t\t\t\t\t\t    "+_vm._s(s)+"\n\t\t\t\t\t\t\t  ")])}))])])]),_vm._v(" "),_c('div',{staticClass:"mdc-layout-grid__cell--span-8"},[_c('div',{staticClass:"mdc-card"},[_vm._m(1),_vm._v(" "),_vm._l((_vm.experiences),function(experience){return _c('div',{staticClass:"mdc-card__secondary"},[_c('h1',[_vm._v(" "+_vm._s(experience.title)+" "),_c('span',{staticClass:"infoExp"},[_vm._v(" "+_vm._s(experience.start)+" ")])]),_vm._v(" "),_c('p',{staticClass:"infoExp"},[_vm._v(" "+_vm._s(((experience.company) + ", " + (experience.location)))+" ")]),_vm._v(" "),_c('p',[_vm._v(" "+_vm._s(experience.content))])])})],2)]),_vm._v(" "),_c('div',{staticClass:"mdc-layout-grid__cell--span-12"},[_c('div',{staticClass:"mdc-card"},[_vm._m(2),_vm._v(" "),_vm._l((_vm.formations),function(s){return _c('div',{staticClass:"mdc-card__secondary"},[_c('h1',[_vm._v(_vm._s(s.school))]),_vm._v(" "),_c('span',{staticClass:"infoExp"},[_vm._v(_vm._s(s.diploma))]),_vm._v(" "),_c('p',[_vm._v(" "+_vm._s(s.content)+" ")])])})],2)]),_vm._v(" "),_c('div',{staticClass:"mdc-layout-grid__cell--span-12"},[_c('div',{staticClass:"mdc-card"},[_vm._m(3),_vm._v(" "),_vm._l((_vm.projects),function(p){return _c('div',{staticClass:"mdc-card__secondary"},[_c('a',{attrs:{"href":p.url,"target":"_blank"}},[_c('h1',[_vm._v(" "+_vm._s(p.title)+" ")])]),_vm._v(" "),_c('p',[_vm._v(_vm._s(p.description))]),_vm._v(" "),_c('span',{staticClass:"infoExp"},[_vm._v(" "+_vm._s(p.techno))])])})],2)])])])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"cvbase"}},[_c('div',{staticClass:"mdc-layout-grid"},[_c('div',{staticClass:"mdc-layout-grid__inner"},[_c('div',{staticClass:"mdc-layout-grid__cell--span-12 top"},[_c('div',{staticClass:"mdc-layout-grid"},[_c('div',{staticClass:"mdc-layout-grid__inner"},[_c('div',{staticClass:"mdc-layout-grid__cell--span-12"},[(_vm.basicInformation.picture)?_c('img',{attrs:{"src":_vm.basicInformation.picture,"height":"150"}}):_vm._e(),_vm._v(" "),_c('h2',[_vm._v(_vm._s(_vm.basicInformation.title))]),_vm._v(" "),_c('p',[_vm._v("\n\t\t\t\t\t      \t"+_vm._s(((_vm.basicInformation.firstName) + " " + (_vm.basicInformation.lastName)))+"\n\t\t\t\t\t    \t\t")]),_vm._v(" "),_c('p',[_vm._v("\n\t\t\t\t\t      \t"+_vm._s(_vm.basicInformation.mail)+"\n\t\t\t\t\t      \t")]),_vm._v(" "),_c('p',[_vm._v("\n\t\t\t\t\t      \t"+_vm._s(_vm.basicInformation.birthDate)+"\n\t\t\t\t\t      \t")]),_vm._v(" "),_c('p',[_vm._v("\n\t\t\t\t\t      \t"+_vm._s(((_vm.experiences[0].company) + " " + (_vm.formations[0].school)))+"\n\t\t\t\t\t    \t\t")]),_vm._v(" "),_c('p',[_vm._v("\n\t\t\t\t\t      \t"+_vm._s(((_vm.basicInformation.location) + " " + (_vm.basicInformation.postCode) + " " + (_vm.basicInformation.country)))+"\n\t\t\t    \t\t\t\t")])]),_vm._v(" "),_c('div',{staticClass:"mdc-layout-grid__cell--span-12 secRow"},[_vm._v("\n\t\t\t    \t\t\t"+_vm._s(_vm.basicInformation.simpleDescription)+"\n\t\t\t    \t\t")])])])]),_vm._v(" "),_c('div',{staticClass:"mdc-layout-grid__cell--span-4"},[_c('div',{staticClass:"mdc-card"},[_vm._m(0),_vm._v(" "),_c('div',{staticClass:"mdc-card__secondary"},[_c('ul',{staticClass:"mdc-list",attrs:{"id":"example-1"}},_vm._l((_vm.skills),function(s){return _c('li',{staticClass:"mdc-list-item"},[_vm._v("\n\t\t\t\t\t\t\t    "+_vm._s(s)+"\n\t\t\t\t\t\t\t  ")])}))])])]),_vm._v(" "),_c('div',{staticClass:"mdc-layout-grid__cell--span-8"},[_c('div',{staticClass:"mdc-card"},[_vm._m(1),_vm._v(" "),_vm._l((_vm.experiences),function(experience){return _c('div',{staticClass:"mdc-card__secondary"},[_c('h1',[_vm._v(" "+_vm._s(experience.title)+" "),_c('span',{staticClass:"infoExp"},[_vm._v(" "+_vm._s(experience.start)+" ")])]),_vm._v(" "),_c('p',{staticClass:"infoExp"},[_vm._v(" "+_vm._s(((experience.company) + ", " + (experience.location)))+" ")]),_vm._v(" "),_c('p',[_vm._v(" "+_vm._s(experience.content))])])})],2)]),_vm._v(" "),_c('div',{staticClass:"mdc-layout-grid__cell--span-12"},[_c('div',{staticClass:"mdc-card"},[_vm._m(2),_vm._v(" "),_vm._l((_vm.formations),function(s){return _c('div',{staticClass:"mdc-card__secondary"},[_c('h1',[_vm._v(_vm._s(s.school))]),_vm._v(" "),_c('span',{staticClass:"infoExp"},[_vm._v(_vm._s(s.diploma))]),_vm._v(" "),_c('p',[_vm._v(" "+_vm._s(s.content)+" ")])])})],2)]),_vm._v(" "),_c('div',{staticClass:"mdc-layout-grid__cell--span-12"},[_c('div',{staticClass:"mdc-card"},[_vm._m(3),_vm._v(" "),_vm._l((_vm.projects),function(p){return _c('div',{staticClass:"mdc-card__secondary"},[_c('a',{attrs:{"href":p.url,"target":"_blank"}},[_c('h1',[_vm._v(" "+_vm._s(p.title)+" ")])]),_vm._v(" "),_c('p',[_vm._v(_vm._s(p.description))]),_vm._v(" "),_c('span',{staticClass:"infoExp"},[_vm._v(" "+_vm._s(p.techno))])])})],2)])])])])}
 __vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"mdc-card__primary"},[_c('h2',{staticClass:"demo-card__title mdc-typography--headline6"},[_vm._v(" Competence")])])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"mdc-card__primary"},[_c('h2',{staticClass:"demo-card__title mdc-typography--headline6"},[_vm._v(" Experience")])])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"mdc-card__primary"},[_c('h2',{staticClass:"demo-card__title mdc-typography--headline6"},[_vm._v("Formation")])])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"mdc-card__primary"},[_c('h2',{staticClass:"demo-card__title mdc-typography--headline6"},[_vm._v(" Project ")])])}]
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -31556,10 +31537,10 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-6b668346", __vue__options__)
   } else {
-    hotAPI.reload("data-v-6b668346", __vue__options__)
+    hotAPI.rerender("data-v-6b668346", __vue__options__)
   }
 })()}
-},{"../tools/XMLParser":57,"vue":49,"vue-hot-reload-api":46}],54:[function(require,module,exports){
+},{"vue":49,"vue-hot-reload-api":46}],54:[function(require,module,exports){
 var __vueify_style_dispose__ = require("vueify/lib/insert-css").insert("*[data-v-23c379cd] {  box-sizing: border-box;\t}\n\n/* Set a background color */\n\tbody[data-v-23c379cd] {\n\t  background-color: #474e5d;\n\t  font-family: Helvetica, sans-serif;\n\t}\n\n/* The actual timeline (the vertical ruler) */\n\t.timeline[data-v-23c379cd] {\n\t  position: relative;\n\t  max-width: 1200px;\n\t  margin: 0 auto;\n\t}\n\n/* The actual timeline (the vertical ruler) */\n\t.timeline[data-v-23c379cd]::after {\n\t  content: '';\n\t  position: absolute;\n\t  width: 6px;\n\t  background-color: white;\n\t  top: 0;\n\t  bottom: 0;\n\t  left: 50%;\n\t  margin-left: -3px;\n\t}\n\n/* Container around content */\n\t.container[data-v-23c379cd] {\n\t  padding: 10px 40px;\n\t  position: relative;\n\t  background-color: inherit;\n\t  width: 50%;\n\t}\n\n/* The circles on the timeline */\n\t.container[data-v-23c379cd]::after {\n\t  content: '';\n\t  position: absolute;\n\t  width: 25px;\n\t  height: 25px;\n\t  right: -17px;\n\t  background-color: white;\n\t  border: 4px solid #FF9F55;\n\t  top: 15px;\n\t  border-radius: 50%;\n\t  z-index: 1;\n\t}\n\n/* Place the container to the left */\n\t.left[data-v-23c379cd] {\n\t  left: 0;\n\t}\n\n/* Place the container to the right */\n\t.right[data-v-23c379cd] {\n\t  left: 50%;\n\t}\n\n/* Add arrows to the left container (pointing right) */\n\t.left[data-v-23c379cd]::before {\n\t  content: \" \";\n\t  height: 0;\n\t  position: absolute;\n\t  top: 22px;\n\t  width: 0;\n\t  z-index: 1;\n\t  right: 30px;\n\t  border: medium solid white;\n\t  border-width: 10px 0 10px 10px;\n\t  border-color: transparent transparent transparent white;\n\t}\n\n/* Add arrows to the right container (pointing left) */\n\t.right[data-v-23c379cd]::before {\n\t  content: \" \";\n\t  height: 0;\n\t  position: absolute;\n\t  top: 22px;\n\t  width: 0;\n\t  z-index: 1;\n\t  left: 30px;\n\t  border: medium solid white;\n\t  border-width: 10px 10px 10px 0;\n\t  border-color: transparent white transparent transparent;\n\t}\n\n/* Fix the circle for containers on the right side */\n\t.right[data-v-23c379cd]::after {\n\t  left: -16px;\n\t}\n\n/* The actual content */\n\t.content[data-v-23c379cd] {\n\t  padding: 20px 30px;\n\t  background-color: white;\n\t  position: relative;\n\t  border-radius: 6px;\n\t}\n\n/* Media queries - Responsive timeline on screens less than 600px wide */\n\t@media screen and (max-width: 600px) {\n\t/* Place the timelime to the left */\n\t  .timeline[data-v-23c379cd]::after {\n\t    left: 31px;\n\t  }\n\n\t/* Full-width containers */\n\t  .container[data-v-23c379cd] {\n\t    width: 100%;\n\t    padding-left: 70px;\n\t    padding-right: 25px;\n\t  }\n\n\t/* Make sure that all arrows are pointing leftwards */\n\t  .container[data-v-23c379cd]::before {\n\t    left: 60px;\n\t    border: medium solid white;\n\t    border-width: 10px 10px 10px 0;\n\t    border-color: transparent white transparent transparent;\n\t  }\n\n\t/* Make sure all circles are at the same spot */\n\t  .left[data-v-23c379cd]::after, .right[data-v-23c379cd]::after {\n\t    left: 15px;\n\t  }\n\n\t/* Make all right containers behave like the left ones */\n\t  .right[data-v-23c379cd] {\n\t    left: 0%;\n\t  }\n\t}")
 ;(function(){
 'use strict';
@@ -31569,7 +31550,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = {
 	created: function created() {
-		var user = localStorage.getItem('user');
+		var user = sessionStorage.getItem('user');
 
 		if (user) {
 			user = JSON.parse(user);
@@ -31655,6 +31636,10 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _XMLParser = require('../tools/XMLParser');
+
+var _XMLParser2 = _interopRequireDefault(_XMLParser);
 
 var _Github = require('../tools/Github');
 
@@ -31758,10 +31743,10 @@ exports.default = {
         return true;
       }
     },
-    nextStep: function nextStep() {
-      var checkDataResult = this.checkData();
+    saveUserInformation: function saveUserInformation() {
+      var msg = void 0;
 
-      if (checkDataResult === true) {
+      if ((msg = this.checkData()) === true) {
         var user = {
           firstName: this.linkedin.firstName,
           lastName: this.linkedin.lastName,
@@ -31772,11 +31757,26 @@ exports.default = {
           mail: this.mail === 'github' ? this.github.email : this.linkedin.emailAddress
         };
 
-        localStorage.setItem('user', JSON.stringify(user));
-        this.$router.push({ name: 'cvbase' });
+        sessionStorage.setItem('user', JSON.stringify(user));
       } else {
-        alert(checkDataResult);
+        alert(msg);
       }
+    },
+    exportToXML: function exportToXML() {
+      try {
+        this.saveUserInformation();
+
+        var xml = _XMLParser2.default.fromJson(sessionStorage.getItem('user'), 'cv', 'schema.xsd');
+
+        _XMLParser2.default.generateDownloadLink('cv.xml', xml);
+      } catch (err) {
+        console.log(err);
+        alert('Erreur lors de la génération du XML');
+      }
+    },
+    nextStep: function nextStep() {
+      this.saveUserInformation();
+      this.$router.push({ name: 'cvbase' });
     }
   }
 
@@ -31785,7 +31785,7 @@ exports.default = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"home"}},[_c('h1',{staticClass:"padding"},[_vm._v("Préparation du CV")]),_vm._v(" "),_c('div',{staticClass:"card"},[_c('div',{staticClass:"card-primary"},[_c('h1',[_vm._v("Mes informations")]),_vm._v(" "),_c('div',{staticClass:"padding"},[_vm._v("\n        Connectez-vous sur vos différents comptes afin de récupérer toutes vos données utiles à la génération de votre CV\n      ")]),_vm._v(" "),_c('table',{staticClass:"table full-width table-centered"},[_vm._m(0),_vm._v(" "),_c('tbody',[_c('tr',[_c('td',[_vm._v("\n              LinkedIn\n            ")]),_vm._v(" "),_c('td',[(!_vm.linkedin)?_c('button',{staticClass:"btn btn-primary",on:{"click":_vm.logInLinkedin}},[_vm._v("Connexion")]):_c('button',{staticClass:"btn",on:{"click":_vm.logOutLinkedin}},[_vm._v("Déconnexion")])])]),_vm._v(" "),_c('tr',[_c('td',[_vm._v("Github")]),_vm._v(" "),_c('td',[(!_vm.github)?_c('button',{staticClass:"btn btn-primary",on:{"click":_vm.setGithubUsername}},[_vm._v("Connexion")]):_c('button',{staticClass:"btn",on:{"click":_vm.resetGithub}},[_vm._v("Déconnexion")])])])])])]),_vm._v(" "),_c('div',{staticClass:"card-actions"},[(_vm.linkedin || _vm.github)?_c('button',{staticClass:"btn float-right",on:{"click":_vm.logout}},[_vm._v("Déconnexion")]):_vm._e()])]),_vm._v(" "),_c('div',{staticClass:"card"},[_vm._m(1),_vm._v(" "),_c('div',{staticClass:"card-secondary"},[_vm._m(2),_vm._v(" "),_c('label',[_vm._v("Choix de fusion des données")]),_vm._v(" "),_c('table',{staticClass:"table full-width table-centered"},[_vm._m(3),_vm._v(" "),_c('tbody',[_c('tr',[_c('td',[_vm._v("\n              LinkedIn\n            ")]),_vm._v(" "),_c('td',[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.avatar),expression:"avatar"}],attrs:{"type":"radio","name":"avatar","value":"linkedin"},domProps:{"checked":_vm._q(_vm.avatar,"linkedin")},on:{"change":function($event){_vm.avatar="linkedin"}}})]),_vm._v(" "),_c('td',[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.mail),expression:"mail"}],attrs:{"type":"radio","name":"mail","value":"linkedin"},domProps:{"checked":_vm._q(_vm.mail,"linkedin")},on:{"change":function($event){_vm.mail="linkedin"}}})])]),_vm._v(" "),_c('tr',[_c('td',[_vm._v("Github")]),_vm._v(" "),_c('td',[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.avatar),expression:"avatar"}],attrs:{"type":"radio","name":"avatar","value":"github"},domProps:{"checked":_vm._q(_vm.avatar,"github")},on:{"change":function($event){_vm.avatar="github"}}})]),_vm._v(" "),_c('td',[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.mail),expression:"mail"}],attrs:{"type":"radio","name":"mail","value":"github"},domProps:{"checked":_vm._q(_vm.mail,"github")},on:{"change":function($event){_vm.mail="github"}}})])])])])])]),_vm._v(" "),_c('div',{staticClass:"padding text-center"},[_c('button',{staticClass:"btn btn-large btn-primary",on:{"click":_vm.nextStep}},[_vm._v("Générer mon CV")])]),_vm._v(" "),_vm._m(4)])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"home"}},[_c('h1',{staticClass:"padding"},[_vm._v("Préparation du CV")]),_vm._v(" "),_c('div',{staticClass:"card"},[_c('div',{staticClass:"card-primary"},[_c('h1',[_vm._v("Mes informations")]),_vm._v(" "),_c('div',{staticClass:"padding"},[_vm._v("\n        Connectez-vous sur vos différents comptes afin de récupérer toutes vos données utiles à la génération de votre CV\n      ")]),_vm._v(" "),_c('table',{staticClass:"table full-width table-centered"},[_vm._m(0),_vm._v(" "),_c('tbody',[_c('tr',[_c('td',[_vm._v("\n              LinkedIn\n            ")]),_vm._v(" "),_c('td',[(!_vm.linkedin)?_c('button',{staticClass:"btn btn-primary",on:{"click":_vm.logInLinkedin}},[_vm._v("Connexion")]):_c('button',{staticClass:"btn",on:{"click":_vm.logOutLinkedin}},[_vm._v("Déconnexion")])])]),_vm._v(" "),_c('tr',[_c('td',[_vm._v("Github")]),_vm._v(" "),_c('td',[(!_vm.github)?_c('button',{staticClass:"btn btn-primary",on:{"click":_vm.setGithubUsername}},[_vm._v("Connexion")]):_c('button',{staticClass:"btn",on:{"click":_vm.resetGithub}},[_vm._v("Déconnexion")])])])])])]),_vm._v(" "),_c('div',{staticClass:"card-actions"},[(_vm.linkedin || _vm.github)?_c('button',{staticClass:"btn float-right",on:{"click":_vm.logout}},[_vm._v("Déconnexion")]):_vm._e()])]),_vm._v(" "),_c('div',{staticClass:"card"},[_vm._m(1),_vm._v(" "),_c('div',{staticClass:"card-secondary"},[_vm._m(2),_vm._v(" "),_c('label',[_vm._v("Choix de fusion des données")]),_vm._v(" "),_c('table',{staticClass:"table full-width table-centered"},[_vm._m(3),_vm._v(" "),_c('tbody',[_c('tr',[_c('td',[_vm._v("\n              LinkedIn\n            ")]),_vm._v(" "),_c('td',[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.avatar),expression:"avatar"}],attrs:{"type":"radio","name":"avatar","value":"linkedin"},domProps:{"checked":_vm._q(_vm.avatar,"linkedin")},on:{"change":function($event){_vm.avatar="linkedin"}}})]),_vm._v(" "),_c('td',[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.mail),expression:"mail"}],attrs:{"type":"radio","name":"mail","value":"linkedin"},domProps:{"checked":_vm._q(_vm.mail,"linkedin")},on:{"change":function($event){_vm.mail="linkedin"}}})])]),_vm._v(" "),_c('tr',[_c('td',[_vm._v("Github")]),_vm._v(" "),_c('td',[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.avatar),expression:"avatar"}],attrs:{"type":"radio","name":"avatar","value":"github"},domProps:{"checked":_vm._q(_vm.avatar,"github")},on:{"change":function($event){_vm.avatar="github"}}})]),_vm._v(" "),_c('td',[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.mail),expression:"mail"}],attrs:{"type":"radio","name":"mail","value":"github"},domProps:{"checked":_vm._q(_vm.mail,"github")},on:{"change":function($event){_vm.mail="github"}}})])])])])])]),_vm._v(" "),_c('div',{staticClass:"padding text-center"},[_c('button',{staticClass:"btn btn-large",on:{"click":_vm.exportToXML}},[_vm._v("Exporter en XML")]),_vm._v(" "),_c('button',{staticClass:"btn btn-large btn-primary",on:{"click":_vm.nextStep}},[_vm._v("Générer mon CV")])]),_vm._v(" "),_vm._m(4)])}
 __vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('thead',[_c('tr',[_c('th',[_vm._v("Réseau")]),_vm._v(" "),_c('th',[_vm._v("Action")])])])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"card-primary"},[_c('h1',[_vm._v("Choix des informations")])])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticStyle:{"margin-bottom":"10px"}},[_c('label',{attrs:{"for":"select"}},[_vm._v("Choix de la langue")]),_vm._v(" "),_c('select',{attrs:{"id":"select"}},[_c('option',{attrs:{"value":"fr","selected":""}},[_vm._v("Français")]),_vm._v(" "),_c('option',{attrs:{"value":"en"}},[_vm._v("English")])])])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('thead',[_c('tr',[_c('th',[_vm._v("Réseau")]),_vm._v(" "),_c('th',[_vm._v("Avatar")]),_vm._v(" "),_c('th',[_vm._v("Mail")])])])},function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticStyle:{"visibility":"hidden"}},[_c('script',{attrs:{"id":"linkedinBtn","type":"in/Login"}})])}]
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -31794,10 +31794,10 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!module.hot.data) {
     hotAPI.createRecord("data-v-49591838", __vue__options__)
   } else {
-    hotAPI.rerender("data-v-49591838", __vue__options__)
+    hotAPI.reload("data-v-49591838", __vue__options__)
   }
 })()}
-},{"../tools/Github":56,"vue":49,"vue-hot-reload-api":46}],56:[function(require,module,exports){
+},{"../tools/Github":56,"../tools/XMLParser":57,"vue":49,"vue-hot-reload-api":46}],56:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -31879,7 +31879,7 @@ var Github = function () {
 exports.default = Github;
 
 },{"ajax-request":2}],57:[function(require,module,exports){
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -31895,7 +31895,16 @@ var XMLParser = function () {
   }
 
   _createClass(XMLParser, null, [{
-    key: "fromObj",
+    key: 'escapeValue',
+    value: function escapeValue(value) {
+      if (value && value.constructor.name === 'String') {
+        return value.replace('&', '&amp;');
+      } else {
+        return value;
+      }
+    }
+  }, {
+    key: 'fromObj',
     value: function fromObj(obj, root, schemaPath) {
       var r = '';
 
@@ -31903,21 +31912,21 @@ var XMLParser = function () {
         if (obj[key] instanceof Array) {
           var eltKey = key.substr(0, key.length - 1);
 
-          r += "<" + key + ">";
+          r += '<' + key + '>';
 
           for (var i = 0; i < obj[key].length; i++) {
             if (obj[key][i] instanceof Object) {
-              r += "\n" + ("<" + eltKey + ">") + "\n" + XMLParser.fromObj(obj[key][i]) + "\n" + ("</" + eltKey + ">");
+              r += "\n" + ('<' + eltKey + '>') + "\n" + XMLParser.fromObj(obj[key][i]) + "\n" + ('</' + eltKey + '>');
             } else {
-              r += "\n" + ("<" + eltKey + ">" + obj[key][i] + "</" + eltKey + ">");
+              r += "\n" + ('<' + eltKey + '>' + XMLParser.escapeValue(obj[key][i]) + '</' + eltKey + '>');
             }
           }
 
           r += "\n</" + key + '>';
         } else if (obj[key] instanceof Object) {
-          r += "<" + key + ">" + "\n" + XMLParser.fromObj(obj[key]) + "\n</" + key + '>';
+          r += '<' + key + '>' + "\n" + XMLParser.fromObj(obj[key]) + "\n</" + key + '>';
         } else {
-          r += "<" + key + ">" + obj[key] + "</" + key + ">";
+          r += '<' + key + '>' + XMLParser.escapeValue(obj[key]) + '</' + key + '>';
         }
       }
 
@@ -31925,21 +31934,21 @@ var XMLParser = function () {
         var xsdPart = '';
 
         if (schemaPath) {
-          xsdPart += " xsi:noNamespaceSchemaLocation=\"" + schemaPath + "\"";
+          xsdPart += ' xsi:noNamespaceSchemaLocation="' + schemaPath + '"';
         }
 
-        return "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n" + ("<" + root + " xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"" + xsdPart + ">") + "\n" + r + "\n</" + root + '>';
+        return "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n" + ('<' + root + ' xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"' + xsdPart + '>') + "\n" + r + "\n</" + root + '>';
       } else {
         return r;
       }
     }
   }, {
-    key: "fromJson",
-    value: function fromJson(json, root) {
-      return XMLParser.fromObj(JSON.parse(json), root);
+    key: 'fromJson',
+    value: function fromJson(json, root, schemaPath) {
+      return XMLParser.fromObj(JSON.parse(json), root, schemaPath);
     }
   }, {
-    key: "generateDownloadLink",
+    key: 'generateDownloadLink',
     value: function generateDownloadLink(filename, text) {
       var element = document.createElement('a');
 

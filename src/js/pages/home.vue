@@ -88,6 +88,7 @@
     </div>
 
     <div class="padding text-center">
+      <button class="btn btn-large" v-on:click="exportToXML">Exporter en XML</button>
       <button class="btn btn-large btn-primary" v-on:click="nextStep">Générer mon CV</button>
     </div>
 
@@ -99,7 +100,7 @@
 
 
 <script>
-//import Linkedin from '../tools/Linkedin';
+import XMLParser from '../tools/XMLParser';
 import Github from '../tools/Github';
 
 
@@ -205,10 +206,10 @@ export default {
 
     },
 
-    nextStep() {
-      var checkDataResult = this.checkData();
+    saveUserInformation() {
+      let msg;
 
-      if (checkDataResult === true) {
+      if ((msg = this.checkData()) === true) {
         let user = {
             firstName: this.linkedin.firstName,
             lastName: this.linkedin.lastName,
@@ -219,12 +220,28 @@ export default {
             mail: this.mail === 'github' ? this.github.email : this.linkedin.emailAddress 
           };
 
-        localStorage.setItem('user', JSON.stringify(user))
-        this.$router.push({ name: 'cvbase' })
+        sessionStorage.setItem('user', JSON.stringify(user))
+      } else {
+        alert(msg)
       }
-      else {
-        alert(checkDataResult);
+    },
+
+    exportToXML() {
+      try {
+        this.saveUserInformation()
+
+        let xml = XMLParser.fromJson(sessionStorage.getItem('user'), 'cv', 'schema.xsd');
+
+        XMLParser.generateDownloadLink('cv.xml', xml)
+      } catch (err) {
+        console.log(err)
+        alert('Erreur lors de la génération du XML')
       }
+    },
+
+    nextStep() {
+      this.saveUserInformation()
+      this.$router.push({ name: 'cvbase' })
     }
   }
 

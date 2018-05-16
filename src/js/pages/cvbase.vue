@@ -1,7 +1,5 @@
 <template>
   <div id="cvbase">
-		<button class="btn btn-primary" v-on:click="exportToXML">Exporter en XML</button>
-
 		<div class="mdc-layout-grid">
 		  <div class="mdc-layout-grid__inner">
 			  
@@ -99,11 +97,9 @@
 </template>
 
 <script>
-import XMLParser from '../tools/XMLParser';
-
 export default {
 	created() {
-		let user = localStorage.getItem('user');
+		let user = sessionStorage.getItem('user');
 
 		if (user) {
 			user = JSON.parse(user)
@@ -173,17 +169,6 @@ export default {
 				{ school: 'Polytech Paris Sud', diploma: 'Diplome obtenu en etude', content: 'Sed id diam eget dolor euismod fermentum id eget orci. Etiam ultrices, tortor convallis sollicitudin faucibus, libero dolor tempus odio, sit amet sodales lorem libero id velit. Sed at rhoncus massa. Ut a porta sem, ut dignissim tellus. Suspendisse id venenatis lectus. Ut ornare condimentum interdum. Etiam vitae justo volutpat, consequat purus aliquet, consequat risus. Integer non facilisis urna. Cras non laoreet orci. Sed faucibus malesuada nibh vitae dictum. Aliquam pretium tincidunt imperdiet. Nunc finibus imperdiet eros. Pellentesque varius lorem ut ante pellentesque tempor. ' }
 			],
 			skills				: ['Lorem', 'Ipsum','Lorem', 'Ipsum','Lorem', 'Ipsum','Lorem', 'Ipsum','Lorem', 'Ipsum','Lorem']
-		}
-	},
-	methods: {
-		exportToXML() {
-			try {
-				let xml = XMLParser.fromObj(this.$data, 'cv', 'schema.xsd');
-
-				XMLParser.generateDownloadLink('cv.xml', xml)
-			} catch (err) {
-				alert('Erreur lors de la génération du XML')
-			}
 		}
 	}
 }
